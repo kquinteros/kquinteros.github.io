@@ -1,4 +1,5 @@
 source "https://rubygems.org"
+#commit out when using bundle commmand. It has issues with the jekyll version github pages uses. 
 
 
 # Hello! This is where you manage which Jekyll version is used to run.
@@ -9,7 +10,7 @@ source "https://rubygems.org"
 #
 # This will help ensure the proper Jekyll version is running.
 # Happy Jekylling!
-gem "jekyll", "~> 3.8.3"
+gem "jekyll"
 
 # This is the default theme for new Jekyll sites. You may change this to anything you like.
 gem "jekyll-theme-dinky"
@@ -21,6 +22,7 @@ gem "jekyll-theme-dinky"
 # If you have any plugins, put them here!
 group :jekyll_plugins do
   gem "jekyll-feed", "~> 0.6"
+  gem "github-pages"
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
