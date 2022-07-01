@@ -20,3 +20,10 @@ body {
 .portfolio-item {
   margin-bottom: 30px;
 }
+
+.img {
+    float: left;
+    width:  348px;
+    height: 348px;
+    background-size: cover;
+}
