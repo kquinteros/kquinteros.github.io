@@ -1,3 +1,3 @@
 # Personal Website
 
-This repository 
+This repository is for my persona website :). 
