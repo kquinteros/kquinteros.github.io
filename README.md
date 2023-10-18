@@ -1,4 +1,4 @@
-# Personal Website
+# Phylofignatico
 
 This repository is for my personal website :). 
 
