@@ -29,7 +29,7 @@
         "url": "https://github.com/StartBootstrap/startbootstrap-modern-business.git"
     },
     "dependencies": {
-        "bootstrap": "4.5.3",
+        "bootstrap": "5.0.0",
         "jquery": "3.5.1"
     },
     "devDependencies": {
