@@ -1,0 +1,15 @@
+{
+  "hash": "db78c90c78799a2d424317ac9c5ca422",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Genomic Adaptation in Fig Wasps\"\ndescription: \"This project investigates genomic divergence in Pegoscapus fig wasps and how it contributes to adaptation and speciation.\"\nauthor: \n    - name: Kevin Quinteros\ndate: \"2025-10-27\"\nimage: Pegoscapus.png\nformat:\n  html:\n    toc: true\nengine: knitr\n---\n\n### Overview\n\nThis project investigates genomic divergence in *Pegoscapus* fig wasps and how it contributes to adaptation and speciation.\n\n### Methods\n\n-   Whole-genome sequencing (PacBio HiFi + Illumina)\n-   Population genomics analyses (π, dXY, F_ST)\n-   Selection scans across chemosensory genes\n\n### Results\n\n\\[Insert plots or figures here\\]",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

@@ -1,0 +1,30 @@
+project:
+  type: website
+  resources: 
+   - resources/Kevin-Quinteros-Resume.pdf
+website:
+  title: "Kevin Quinteros"
+  site-url: kquinteros.github.io
+  navbar:
+    right:
+      - href: index.qmd
+        text: Home
+      - publications.qmd
+      - projects.qmd
+      - blog.qmd
+  page-footer:
+    left: "© Copyright 2025 Kevin Quinteros. Except where otherwise noted, all text and images licensed CC-BY-NC 4.0."
+format:
+  html:
+    theme:
+      - cosmo
+      - theme/theme-light.scss
+    css: styles.css
+    toc: false
+
+publications:
+  # Your ORCID ID
+  orcid: "0000-0002-7121-129X"
+  show-doi: true
+  show-pdf: true   # allows PDFs if you provide them manually
+editor: visual

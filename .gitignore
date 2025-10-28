@@ -2,3 +2,6 @@ _site
 .sass-cache
 .jekyll-metadatai
 .ipynb_checkpoints/
+
+/.quarto/
+**/*.quarto_ipynb

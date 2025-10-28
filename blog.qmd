@@ -1,0 +1,18 @@
+---
+title: "Blog"
+listing:
+  contents: posts
+  sort: "date desc"
+  type: default
+  feed:
+    categories: ["R"]
+page-layout: full
+title-block-banner: false
+
+# Allow comments via Utterances on blog posts
+comments:
+  utterances:
+    repo: kquinteros/phylofignatico-comments
+---
+
+#### Welcome to my blog. A space where I share updates, notes, and insights on things I’ve been learning or find interesting. My goal is to make these posts useful, whether as a reference, a spark for new ideas, or just something enjoyable to read.

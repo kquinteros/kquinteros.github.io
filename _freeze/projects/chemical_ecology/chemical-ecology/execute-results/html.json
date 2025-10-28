@@ -1,0 +1,15 @@
+{
+  "hash": "6534dcf6028dd1c45e9f6d6bdfdd41f9",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Chemical Ecology of Figs\"\ndescription: \"Receptive figs (Ficus) attract their highly host-specific pollinator wasps (family Agaonidae) using volatile organic chemicals. These chemicals vary in type and concentration among fig species and are thought to drive pollinator specificity. However, host switching and sharing among figs and wasps are increasingly recognized. We used genomic data to identify hybrid figs and compared the volatile chemicals they release with those of their parent species. Hybrids shared many compounds with their parents but also exhibited unique compounds not found in either parent (transgressive traits). This suggests that the flexibility of certain enzymes may enable hybrids to produce novel chemical scents. Future research integrating genetics and chemical composition may explain fig and wasp specificity and the evolution of speciation in this pollination mutualism.\"\nauthor: \n    - name: Kevin Quinteros\ndate: \"2025-10-27\"\nimage: fig-volatiles.jpeg\nformat:\n  html:\n    toc: true\nengine: knitr\n---",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

@@ -1,0 +1,30 @@
+---
+title: "Genomic Adaptation in Fig Wasps"
+description: "This project investigates genomic divergence in Pegoscapus fig wasps and how it contributes to adaptation and speciation."
+author: 
+    - name: Kevin Quinteros
+date: "2025-10-27"
+image: Pegoscapus.png
+format:
+  html:
+    toc: true
+engine: knitr
+---
+
+### Overview
+
+This project investigates genomic divergence in *Pegoscapus* fig wasps and how it contributes to adaptation and speciation.
+
+### Methods
+
+-   Whole-genome sequencing (PacBio HiFi + Illumina)
+
+-   Population genomics analyses (π, dXY, F_ST)
+
+-   Selection scans across chemosensory genes
+
+-   <div>
+
+    ### 
+
+    </div>

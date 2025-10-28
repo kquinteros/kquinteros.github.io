@@ -1,0 +1,15 @@
+---
+title: "Projects"
+listing:
+  contents: projects
+  sort: "date desc"
+  type: default
+  feed:
+    categories: ["R"]
+page-layout: full
+title-block-banner: false
+
+comments:
+  utterances:
+    repo: kquinteros/phylofignatico-comments 
+---

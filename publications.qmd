@@ -1,0 +1,18 @@
+---
+title: "Publications"
+bibliography: data/citations.bib 
+csl: data/nature.csl
+nocite: |
+  @*  # include all entries even if not cited
+format: 
+    html:
+     toc: false
+---
+
+This is a list of my **publications and pre-prints**.  
+
+For the most up-to-date list, please check my [ORCID](https://orcid.org/0000-0002-7121-129X) or [Google Scholar](https://scholar.google.com/citations?user=hoy1TEUAAAAJ&hl=en).
+
+
+::: {#refs}
+:::

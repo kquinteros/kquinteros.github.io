@@ -1,0 +1,116 @@
+/*-- scss:defaults --*/
+
+/* --- Color palette (Fernando Llort inspired) --- */
+$primary:   #356CA0;  // deep blue (inspired by Salvadoran tiles and sky)
+$secondary: #EBA937;  // warm golden clay
+$accent:    #D6655A;  // muted coral red
+$bg-light:  #FAF8F4;  // soft cream background
+$text-dark: #2E2E2E;  // neutral dark text
+$text-muted: #6C757D; // muted gray for secondary text
+
+/* --- Core styles --- */
+$body-bg:        $bg-light;
+$body-color:     $text-dark;
+$link-color:     $accent;
+$link-hover-color: darken($accent, 10%);
+$table-border-color: lighten($primary, 40%);
+$footer-fg:      $primary;
+$navbar-fg:      $text-dark;
+$card-bg:        white;
+
+/* Typography */
+$font-family-sans-serif: "Red Hat Text", "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+$headings-font-family: "Petrona", serif;
+$headings-font-weight: 400;
+
+/*-- scss:rules --*/
+
+/* Navbar */
+.navbar {
+  background-color: $primary !important;
+  color: white;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.navbar-title, 
+.navbar-nav .nav-link {
+  color: white !important;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 0.85em;
+
+  &:hover {
+    color: $secondary !important;
+    border-bottom: 1px solid $secondary !important;
+  }
+}
+
+/* Body */
+body {
+  background-color: $body-bg;
+  color: $body-color;
+}
+
+/* Links */
+a {
+  color: $link-color;
+  text-decoration: none;
+
+  &:hover {
+    color: $link-hover-color;
+    text-decoration: underline;
+  }
+}
+
+/* Cards */
+.card {
+  background: $card-bg;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+/* Footer */
+.nav-footer {
+  background-color: $primary;
+  color: white;
+
+  a {
+    color: $secondary;
+    &:hover {
+      color: lighten($secondary, 10%);
+    }
+  }
+}
+
+/* Titles */
+.title {
+  font-size: 2.2em;
+  font-weight: 500;
+  color: $primary;
+}
+
+.subtitle {
+  font-size: 1.2em;
+  color: $text-muted;
+}
+
+/* Code blocks */
+div.sourceCode {
+  background-color: white;
+  border: 1px solid #e5e5e5;
+}
+
+/* Blockquotes */
+.blockquote {
+  color: $text-muted;
+  border-left: 4px solid $accent;
+  padding-left: 1em;
+  font-style: italic;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 991.98px) {
+  .navbar {
+    text-align: center;
+  }
+}

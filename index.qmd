@@ -1,0 +1,47 @@
+---
+title: "Kevin Quinteros"
+image: images/Quinteros-headshot.jpg
+about:
+  template: trestles
+  links:
+    - text: LinkedIn
+      icon: linkedin
+      url: "https://www.linkedin.com/in/kevin-quinteros-phd-348a03320/"
+    - text: GitHub
+      icon: github
+      url: "https://github.com/kquinteros"
+    - text: Blog
+      icon: blog
+      url: "blog.html"
+    - text: Resume
+      icon: file-pdf
+      url: "resources/Kevin-Quinteros-Resume.pdf"
+    - text: Email
+      icon: envelope
+      url: "mailto:Kevin.quinteros@phylofignatico.com"
+execute: 
+  freeze: false
+  echo: false
+  warning: false
+comments: false
+---
+
+::: column-page
+## Bio
+
+**Welcome!**
+
+I’m **Kevin Quinteros**, a postdoctoral researcher studying the relationships between plants and insects. My work combines field ecology and genomic approaches to uncover how coevolution shapes the diversity of life we see today. By investigating the ecological and evolutionary processes that generate and maintain these interactions, I aim to shed light on the mechanisms driving adaptation, specialization, and speciation in plant-insect systems.
+
+**Skills & Expertise**
+
+-   Genomics and bioinformatics
+
+-   Molecular biology and field ecology
+
+-   Phylogenetics and population genomics
+
+-   Data visualization and statistical analysis in R
+
+-   Science communication and mentoring
+:::
