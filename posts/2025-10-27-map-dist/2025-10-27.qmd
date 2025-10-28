@@ -10,7 +10,6 @@ format:
     theme: minty   # light theme
     toc: true
     code-fold: true
-    css: ../post-custom.css
 execute:
   sandbox: false
 resources: 
