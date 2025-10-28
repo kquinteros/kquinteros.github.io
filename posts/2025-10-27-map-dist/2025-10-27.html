@@ -252,11 +252,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="loading-and-cleaning-occurrence-data" class="level2">
 <h2 class="anchored" data-anchor-id="loading-and-cleaning-occurrence-data">Loading and Cleaning Occurrence Data</h2>
-<p>I have preloaded my data. You can load your own data or occurrence data which I have provided in the github foilder associated with this post. - <a href="[resource []{.quarto-shortcode__-param data-is-shortcode=&quot;1&quot; data-value=&quot;Florida-Ficus-Occurrence-Collections-Update-June-2025.csv&quot; data-raw=&quot;&quot;Florida-Ficus-Occurrence-Collections-Update-June-2025.csv&quot;&quot;} ]{.quarto-shortcode__ data-is-shortcode=&quot;1&quot; data-raw=&quot;{{< resource &quot;Florida-Ficus-Occurrence-Collections-Update-June-2025.csv&quot; >}}&quot;}">Ficus occurrence data</a></p>
+<p>I have preloaded my data. You can load your own data or the occurrence data provided in the GitHub folder associated with this <a href="posts/2025-10-27-map-dist/Florida-Ficus-Occurrence-Collections-Update-June-2025.csv">post</a></p>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>Reading layer `Florida_State_Parks_Boundaries' from data source 
-  `/Users/kq/Projects/kquinteros_website/posts/2025-10-27-map-dist/Florida_State_Parks_Boundaries/Florida_State_Parks_Boundaries.shp' 
+  `/Users/kq/Projects/kquinteros.github.io/posts/2025-10-27-map-dist/data/Florida_State_Parks_Boundaries/Florida_State_Parks_Boundaries.shp' 
   using driver `ESRI Shapefile'
 Simple feature collection with 178 features and 15 fields
 Geometry type: MULTIPOLYGON
@@ -266,7 +266,7 @@ Projected CRS: NAD83(2011) / Florida GDL Albers</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Reading layer `Detailed_Florida_State_Boundary' from data source 
-  `/Users/kq/Projects/kquinteros_website/posts/2025-10-27-map-dist/Detailed_Florida_State_Boundary/Detailed_Florida_State_Boundary.shp' 
+  `/Users/kq/Projects/kquinteros.github.io/posts/2025-10-27-map-dist/data/Detailed_Florida_State_Boundary/Detailed_Florida_State_Boundary.shp' 
   using driver `ESRI Shapefile'
 Simple feature collection with 1 feature and 6 fields
 Geometry type: MULTIPOLYGON
@@ -306,7 +306,7 @@ Projected CRS: NAD83 / UTM zone 17N</code></pre>
 </section>
 <section id="spatial-data-for-florida-state-and-parks" class="level2">
 <h2 class="anchored" data-anchor-id="spatial-data-for-florida-state-and-parks">Spatial Data for Florida State and Parks</h2>
-<p>Next, we have to subset our florida state parks shape files. Additional, we don’t need to show the whole state of Florida, so we will crop the shapefile for the state to only focus on southern Florida.</p>
+<p>Next, we have to subset our Florida state parks shape files. Additionally, we don’t need to show the entire state of Florida, so we will crop the shapefile to focus only on southern Florida.</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
