@@ -55,7 +55,7 @@ library(wesanderson)
 
 ## Loading and Cleaning Occurrence Data
 
-I have preloaded my data. You can load your own data or the occurrence data provided in the GitHub folder associated with this post- [Ficus occurrence data](#0) \[Ficus occurrence data\]
+I have preloaded my data. You can load your own data or the occurrence data provided in the GitHub folder associated with this [post](posts/2025-10-27-map-dist/Florida-Ficus-Occurrence-Collections-Update-June-2025.csv)
 
 ```{r}
 #| label: get_data
@@ -99,7 +99,7 @@ species_occ <- species_occ |>
 
 ## Spatial Data for Florida State and Parks
 
-Next, we have to subset our florida state parks shape files. Additional, we don't need to show the whole state of Florida, so we will crop the shapefile for the state to only focus on southern Florida.
+Next, we have to subset our Florida state parks shape files. Additionally, we don't need to show the entire state of Florida, so we will crop the shapefile to focus only on southern Florida.
 
 ```{r}
 #subset our shape files. 
