@@ -6,15 +6,15 @@
       version="2.0">
 <channel>
 <title>Kevin Quinteros</title>
-<link>phylofignatico.com/blog.html#category=R</link>
-<atom:link href="phylofignatico.com/blog-r.xml" rel="self" type="application/rss+xml"/>
+<link>https://phylofignatico.com/blog.html#category=R</link>
+<atom:link href="https://phylofignatico.com/blog-r.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.8.24</generator>
 <lastBuildDate>Fri, 18 Jul 2025 04:00:00 GMT</lastBuildDate>
 <item>
   <title>Mapping the Distribution of Ficus aurea and Ficus citrifolia individuals in Florida State Parks</title>
   <dc:creator>Kevin Quinteros</dc:creator>
-  <link>phylofignatico.com/posts/2025-10-27-map-dist/2025-10-27.html</link>
+  <link>https://phylofignatico.com/posts/2025-10-27-map-dist/2025-10-27.html</link>
   <description><![CDATA[ 
 
 
@@ -539,7 +539,7 @@ i Please use the `linewidth` argument instead.</code></pre>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="phylofignatico.com/posts/2025-10-27-map-dist/2025-10-27_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="https://phylofignatico.com/posts/2025-10-27-map-dist/2025-10-27_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -788,35 +788,35 @@ font-style: inherit;">"Darjeeling1"</span>))</span>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="phylofignatico.com/posts/2025-10-27-map-dist/2025-10-27_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="https://phylofignatico.com/posts/2025-10-27-map-dist/2025-10-27_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="phylofignatico.com/posts/2025-10-27-map-dist/2025-10-27_files/figure-html/unnamed-chunk-6-2.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="https://phylofignatico.com/posts/2025-10-27-map-dist/2025-10-27_files/figure-html/unnamed-chunk-6-2.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="phylofignatico.com/posts/2025-10-27-map-dist/2025-10-27_files/figure-html/unnamed-chunk-6-3.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="https://phylofignatico.com/posts/2025-10-27-map-dist/2025-10-27_files/figure-html/unnamed-chunk-6-3.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="phylofignatico.com/posts/2025-10-27-map-dist/2025-10-27_files/figure-html/unnamed-chunk-6-4.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="https://phylofignatico.com/posts/2025-10-27-map-dist/2025-10-27_files/figure-html/unnamed-chunk-6-4.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="phylofignatico.com/posts/2025-10-27-map-dist/2025-10-27_files/figure-html/unnamed-chunk-6-5.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="https://phylofignatico.com/posts/2025-10-27-map-dist/2025-10-27_files/figure-html/unnamed-chunk-6-5.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -829,9 +829,9 @@ font-style: inherit;">"Darjeeling1"</span>))</span>
   <category>Biodiversity</category>
   <category>Spatial Analysis</category>
   <category>R</category>
-  <guid>phylofignatico.com/posts/2025-10-27-map-dist/2025-10-27.html</guid>
+  <guid>https://phylofignatico.com/posts/2025-10-27-map-dist/2025-10-27.html</guid>
   <pubDate>Fri, 18 Jul 2025 04:00:00 GMT</pubDate>
-  <media:content url="phylofignatico.com/posts/2025-10-27-map-dist/Estero_Bay_Preserve_State_Park_map.png" medium="image" type="image/png" height="144" width="144"/>
+  <media:content url="https://phylofignatico.com/posts/2025-10-27-map-dist/Estero_Bay_Preserve_State_Park_map.png" medium="image" type="image/png" height="144" width="144"/>
 </item>
 </channel>
 </rss>

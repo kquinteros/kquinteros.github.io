@@ -1,1 +1,1 @@
-Sitemap: phylofignatico.com/sitemap.xml
+Sitemap: https://phylofignatico.com/sitemap.xml

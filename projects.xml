@@ -6,15 +6,15 @@
       version="2.0">
 <channel>
 <title>Kevin Quinteros</title>
-<link>phylofignatico.com/projects.html</link>
-<atom:link href="phylofignatico.com/projects.xml" rel="self" type="application/rss+xml"/>
+<link>https://phylofignatico.com/projects.html</link>
+<atom:link href="https://phylofignatico.com/projects.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.8.24</generator>
 <lastBuildDate>Mon, 27 Oct 2025 04:00:00 GMT</lastBuildDate>
 <item>
   <title>Genomic Adaptation in Fig Wasps</title>
   <dc:creator>Kevin Quinteros</dc:creator>
-  <link>phylofignatico.com/projects/Test/project1.html</link>
+  <link>https://phylofignatico.com/projects/Test/project1.html</link>
   <description><![CDATA[ 
 
 
@@ -41,14 +41,14 @@
 </section>
 
  ]]></description>
-  <guid>phylofignatico.com/projects/Test/project1.html</guid>
+  <guid>https://phylofignatico.com/projects/Test/project1.html</guid>
   <pubDate>Mon, 27 Oct 2025 04:00:00 GMT</pubDate>
-  <media:content url="phylofignatico.com/projects/Test/Pegoscapus.png" medium="image" type="image/png" height="150" width="144"/>
+  <media:content url="https://phylofignatico.com/projects/Test/Pegoscapus.png" medium="image" type="image/png" height="150" width="144"/>
 </item>
 <item>
   <title>Chemical Ecology of Figs</title>
   <dc:creator>Kevin Quinteros</dc:creator>
-  <link>phylofignatico.com/projects/chemical_ecology/chemical-ecology.html</link>
+  <link>https://phylofignatico.com/projects/chemical_ecology/chemical-ecology.html</link>
   <description><![CDATA[ 
 
 
@@ -59,9 +59,9 @@
 
 
  ]]></description>
-  <guid>phylofignatico.com/projects/chemical_ecology/chemical-ecology.html</guid>
+  <guid>https://phylofignatico.com/projects/chemical_ecology/chemical-ecology.html</guid>
   <pubDate>Mon, 27 Oct 2025 04:00:00 GMT</pubDate>
-  <media:content url="phylofignatico.com/projects/chemical_ecology/fig-volatiles.jpeg" medium="image" type="image/jpeg"/>
+  <media:content url="https://phylofignatico.com/projects/chemical_ecology/fig-volatiles.jpeg" medium="image" type="image/jpeg"/>
 </item>
 </channel>
 </rss>
