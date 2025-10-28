@@ -4,7 +4,7 @@ project:
    - resources/Kevin-Quinteros-Resume.pdf
 website:
   title: "Kevin Quinteros"
-  site-url: kquinteros.github.io
+  site-url: phylofignatico.com
   navbar:
     right:
       - href: index.qmd
