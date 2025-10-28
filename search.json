@@ -1,0 +1,100 @@
+[
+  {
+    "objectID": "blog.html",
+    "href": "blog.html",
+    "title": "Blog",
+    "section": "",
+    "text": "Welcome to my blog. A space where I share updates, notes, and insights on things I’ve been learning or find interesting. My goal is to make these posts useful, whether as a reference, a spark for new ideas, or just something enjoyable to read.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMapping the Distribution of Ficus aurea and Ficus citrifolia individuals in Florida State Parks\n\n\nVisualizing the distribution of Ficus aurea and Ficus citrifolia collections across Florida State Parks using R spatial analysis tools.\n\n\n\n\n\nJul 18, 2025\n\n\nKevin Quinteros\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Kevin Quinteros",
+    "section": "",
+    "text": "Welcome!\nI’m Kevin Quinteros, a postdoctoral researcher studying the relationships between plants and insects. My work combines field ecology and genomic approaches to uncover how coevolution shapes the diversity of life we see today. By investigating the ecological and evolutionary processes that generate and maintain these interactions, I aim to shed light on the mechanisms driving adaptation, specialization, and speciation in plant-insect systems.\nSkills & Expertise\n\nGenomics and bioinformatics\nMolecular biology and field ecology\nPhylogenetics and population genomics\nData visualization and statistical analysis in R\nScience communication and mentoring"
+  },
+  {
+    "objectID": "index.html#bio",
+    "href": "index.html#bio",
+    "title": "Kevin Quinteros",
+    "section": "",
+    "text": "Welcome!\nI’m Kevin Quinteros, a postdoctoral researcher studying the relationships between plants and insects. My work combines field ecology and genomic approaches to uncover how coevolution shapes the diversity of life we see today. By investigating the ecological and evolutionary processes that generate and maintain these interactions, I aim to shed light on the mechanisms driving adaptation, specialization, and speciation in plant-insect systems.\nSkills & Expertise\n\nGenomics and bioinformatics\nMolecular biology and field ecology\nPhylogenetics and population genomics\nData visualization and statistical analysis in R\nScience communication and mentoring"
+  },
+  {
+    "objectID": "posts/2025-10-27-map-dist/2025-10-27.html",
+    "href": "posts/2025-10-27-map-dist/2025-10-27.html",
+    "title": "Mapping the Distribution of Ficus aurea and Ficus citrifolia individuals in Florida State Parks",
+    "section": "",
+    "text": "I recently had to plot the locality data from our field work done in Florida State Park. Using R’s spatial data visualization tools, I combined occurrence records, park boundaries, and elevation data to show the locality of individuals that were geo-referenced."
+  },
+  {
+    "objectID": "posts/2025-10-27-map-dist/2025-10-27.html#overview",
+    "href": "posts/2025-10-27-map-dist/2025-10-27.html#overview",
+    "title": "Mapping the Distribution of Ficus aurea and Ficus citrifolia individuals in Florida State Parks",
+    "section": "",
+    "text": "I recently had to plot the locality data from our field work done in Florida State Park. Using R’s spatial data visualization tools, I combined occurrence records, park boundaries, and elevation data to show the locality of individuals that were geo-referenced."
+  },
+  {
+    "objectID": "posts/2025-10-27-map-dist/2025-10-27.html#data-sources",
+    "href": "posts/2025-10-27-map-dist/2025-10-27.html#data-sources",
+    "title": "Mapping the Distribution of Ficus aurea and Ficus citrifolia individuals in Florida State Parks",
+    "section": "Data Sources",
+    "text": "Data Sources\nI used shapefiles of the state of Florida and its state park boundaries. These shapefiles are publicly available, and I have provided the links below for anyone who wishes to use them.\nInput Data:\n\nIndividual coordinate data.\nDetailed_Florida_State_Boundary.shp: High-resolution Florida boundary shapefile.\nFlorida_State_Parks_Boundaries.shp: Shapefiles for all Florida State Parks.\n\nOutput:\n\nmaps visualizing collection distributions."
+  },
+  {
+    "objectID": "posts/2025-10-27-map-dist/2025-10-27.html#r-packages-used",
+    "href": "posts/2025-10-27-map-dist/2025-10-27.html#r-packages-used",
+    "title": "Mapping the Distribution of Ficus aurea and Ficus citrifolia individuals in Florida State Parks",
+    "section": "R Packages Used",
+    "text": "R Packages Used\n\n\nCode\nlibrary(tidyverse)\nlibrary(ggplot2)\nlibrary(cowplot)\nlibrary(sf)\nlibrary(wesanderson)"
+  },
+  {
+    "objectID": "posts/2025-10-27-map-dist/2025-10-27.html#loading-and-cleaning-occurrence-data",
+    "href": "posts/2025-10-27-map-dist/2025-10-27.html#loading-and-cleaning-occurrence-data",
+    "title": "Mapping the Distribution of Ficus aurea and Ficus citrifolia individuals in Florida State Parks",
+    "section": "Loading and Cleaning Occurrence Data",
+    "text": "Loading and Cleaning Occurrence Data\nI have preloaded my data. You can load your own data or occurrence data which I have provided in the github foilder associated with this post. - Ficus occurrence data\n\n\nReading layer `Florida_State_Parks_Boundaries' from data source \n  `/Users/kq/Projects/kquinteros_website/posts/2025-10-27-map-dist/Florida_State_Parks_Boundaries/Florida_State_Parks_Boundaries.shp' \n  using driver `ESRI Shapefile'\nSimple feature collection with 178 features and 15 fields\nGeometry type: MULTIPOLYGON\nDimension:     XY\nBounding box:  xmin: 65060.63 ymin: 62239.01 xmax: 793312 ymax: 758319.8\nProjected CRS: NAD83(2011) / Florida GDL Albers\n\n\nReading layer `Detailed_Florida_State_Boundary' from data source \n  `/Users/kq/Projects/kquinteros_website/posts/2025-10-27-map-dist/Detailed_Florida_State_Boundary/Detailed_Florida_State_Boundary.shp' \n  using driver `ESRI Shapefile'\nSimple feature collection with 1 feature and 6 fields\nGeometry type: MULTIPOLYGON\nDimension:     XY\nBounding box:  xmin: -134968.2 ymin: 2712255 xmax: 596284 ymax: 3448075\nProjected CRS: NAD83 / UTM zone 17N\n\n\nTo start, we’ll tidy up the data and pick the state parks where we want to visualize our occurrence records.\n\n\nCode\n# select ficus occurrence that occur in state park\nspecies_occ &lt;- species_occ[species_occ$Locality %in% c(\n  \"Fakahatchee State Park\", \"Estero Bay\", \"Dr. Von D. Mizell State Park\",\n  \"Hugh Taylor Birch State Park\", \"Bill Baggs state Park\",\n  \"Oleta River State Park\", \"Charlotte Harbor Preserve State Park\"\n),]\n\n#clean up species names and edit state park names in our occurence csv so they match the official state park titles.\nspecies_occ &lt;- species_occ |&gt;\n  mutate(Species = case_when(\n    Species == \"Aurea/Citrifolia?\" ~ \"Hybrid\",\n    Species == \"Aurea?\" ~ \"Unknown\",\n    TRUE ~ Species\n  )) |&gt;\n  mutate(Locality = case_when(\n    Locality == \"Fakahatchee State Park\" ~ \"Fakahatchee Strand Preserve State Park\",\n    Locality == \"Estero Bay\" ~ \"Estero Bay Preserve State Park\",\n    Locality == \"Bill Baggs state Park\" ~ \"Bill Baggs Cape Florida State Park\",\n    Locality == \"Dr. Von D. Mizell State Park\" ~ \"Dr. Von D. Mizell-Eula Johnson State Park\",\n    TRUE ~ Locality\n  ))"
+  },
+  {
+    "objectID": "posts/2025-10-27-map-dist/2025-10-27.html#spatial-data-for-florida-state-and-parks",
+    "href": "posts/2025-10-27-map-dist/2025-10-27.html#spatial-data-for-florida-state-and-parks",
+    "title": "Mapping the Distribution of Ficus aurea and Ficus citrifolia individuals in Florida State Parks",
+    "section": "Spatial Data for Florida State and Parks",
+    "text": "Spatial Data for Florida State and Parks\nNext, we have to subset our florida state parks shape files. Additional, we don’t need to show the whole state of Florida, so we will crop the shapefile for the state to only focus on southern Florida.\n\n\nCode\n#subset our shape files. \nfl_parks &lt;- fl_parks |&gt; filter(SITE_NAME %in% c(\n  \"Charlotte Harbor Preserve State Park\", \"Estero Bay Preserve State Park\",\n  \"Fakahatchee Strand Preserve State Park\", \"Bill Baggs Cape Florida State Park\",\n  \"Dr. Von D. Mizell-Eula Johnson State Park\", \"Hugh Taylor Birch State Park\",\n  \"Oleta River State Park\"\n))\n#transform data\nstate &lt;- st_transform(state, 4326)\n\n#crop our Florida state park to only show southern Florida instead of the whole state.\nsouth_florida_bbox &lt;- st_bbox(c(xmin = -82.9, ymin = 24.9, xmax = -79.8, ymax = 27.6), crs = st_crs(state))\nsouth_florida &lt;- st_crop(state, st_as_sfc(south_florida_bbox))\n\n\nWarning: attribute variables are assumed to be spatially constant throughout\nall geometries"
+  },
+  {
+    "objectID": "posts/2025-10-27-map-dist/2025-10-27.html#mapping-the-distribution",
+    "href": "posts/2025-10-27-map-dist/2025-10-27.html#mapping-the-distribution",
+    "title": "Mapping the Distribution of Ficus aurea and Ficus citrifolia individuals in Florida State Parks",
+    "section": "Mapping the Distribution",
+    "text": "Mapping the Distribution\nNow, we are ready to plot our data\n\n\nCode\nggplot() +\n  geom_sf(data = south_florida, fill = \"antiquewhite\", color = \"black\") + #shapefile for south Florida)\n  geom_sf(data = fl_parks, fill = \"forestgreen\", alpha = 0.5, color = \"darkgreen\") +  #shape file for florida state parks\n  geom_point(data = species_occ, aes(x = Lon, y = Lat, fill = Species), shape=21, color=\"black\", size=1) + # ficus occurrence data\n  labs(title = \"Ficus Occurrences in Florida State Parks\") + # title\n  scale_fill_manual(values = wes_palette(\"Darjeeling1\")) + # using the wes anderson color palette here\n  coord_sf(xlim = c(-82.7, -79.8), ylim = c(24.8, 27.5), expand = FALSE) + # adjust the size of the map\n  theme_cowplot() + \n  theme(panel.background = element_rect(fill = \"aliceblue\"), # all the setting below adjust title and other plot properties\n        plot.title = element_text(hjust = 0.5, face = \"bold\", size = 10),\n        axis.title.x = element_blank(),\n        axis.title.y = element_blank(),\n        panel.grid.major = element_blank(),\n        panel.grid.minor = element_blank(),\n        panel.border = element_rect(colour = \"black\", fill=NA, size=1.5),\n        text = element_text(size = 10))\n\n\nWarning: The `size` argument of `element_rect()` is deprecated as of ggplot2 3.4.0.\ni Please use the `linewidth` argument instead."
+  },
+  {
+    "objectID": "posts/2025-10-27-map-dist/2025-10-27.html#individual-park-maps",
+    "href": "posts/2025-10-27-map-dist/2025-10-27.html#individual-park-maps",
+    "title": "Mapping the Distribution of Ficus aurea and Ficus citrifolia individuals in Florida State Parks",
+    "section": "Individual Park Maps",
+    "text": "Individual Park Maps\nNow we have a plot showing Ficus occurrences across all the state parks where we collected data. However, we also want to visualize the occurrences for individual parks. Instead of writing the same code for each park, we can automate this process by creating a loop.\n\n\nCode\nfor (park in unique(fl_parks$SITE_NAME)) { #start the loop\n  park_poly &lt;- fl_parks[fl_parks$SITE_NAME == park, ] #select the park where we are mapping\n  park_occ  &lt;- species_occ[species_occ$Locality == park, ] #select individual that were collected in that park\n  if (nrow(park_poly) == 0 || st_is_empty(park_poly) || !st_is_valid(park_poly)) next # check that our shapefile is not empty\n  if (st_crs(park_poly) != st_crs(state)) park_poly &lt;- st_transform(park_poly, crs = st_crs(state))\n  safe_name &lt;- str_replace_all(park, \"[^A-Za-z0-9]\", \"_\")\n  bbox &lt;- st_bbox(park_poly)\n  pad &lt;- 0.01 # padding parameter f\n  xlim &lt;- c(as.numeric(bbox$xmin) - pad, as.numeric(bbox$xmax) + pad) # create a small margin for the graph based on shapefile of park\n  ylim &lt;- c(as.numeric(bbox$ymin) - pad, as.numeric(bbox$ymax) + pad)\n  print(\n    ggplot() +\n      geom_sf(data = state, fill = \"antiquewhite\", color = \"black\") +\n      geom_sf(data = park_poly, fill = \"forestgreen\", alpha = 0.6, color = \"darkgreen\") +\n      geom_point(data = park_occ, aes(x = Lon, y = Lat, fill = Species), shape=21, color=\"black\", size=1) +\n      coord_sf(xlim = xlim, ylim = ylim) +\n      theme_cowplot() +\n      labs(title = park) +\n      scale_fill_manual(values = wes_palette(\"Darjeeling1\"))\n  )\n}"
+  },
+  {
+    "objectID": "projects/Test/project1.html",
+    "href": "projects/Test/project1.html",
+    "title": "Genomic Adaptation in Fig Wasps",
+    "section": "",
+    "text": "Overview\nThis project investigates genomic divergence in Pegoscapus fig wasps and how it contributes to adaptation and speciation.\n\n\nMethods\n\nWhole-genome sequencing (PacBio HiFi + Illumina)\nPopulation genomics analyses (π, dXY, F_ST)\nSelection scans across chemosensory genes\n\n\n\nResults\n[Insert plots or figures here]"
+  },
+  {
+    "objectID": "projects.html",
+    "href": "projects.html",
+    "title": "Projects",
+    "section": "",
+    "text": "Genomic Adaptation in Fig Wasps\n\n\nThis project investigates genomic divergence in Pegoscapus fig wasps and how it contributes to adaptation and speciation.\n\n\n\n\n\nOct 27, 2025\n\n\nKevin Quinteros\n\n\n\n\n\n\n\n\n\n\n\n\nChemical Ecology of Figs\n\n\nReceptive figs (Ficus) attract their highly host-specific pollinator wasps (family Agaonidae) using volatile organic chemicals. These chemicals vary in type and concentration among fig species and are thought to drive pollinator specificity. However, host switching and sharing among figs and wasps are increasingly recognized. We used genomic data to identify hybrid figs and compared the volatile chemicals they release with those of their parent species. Hybrids shared many compounds with their parents but also exhibited unique compounds not found in either parent (transgressive traits). This suggests that the flexibility of certain enzymes may enable hybrids to produce novel chemical scents. Future research integrating genetics and chemical composition may explain fig and wasp specificity and the evolution of speciation in this pollination mutualism.\n\n\n\n\n\nOct 27, 2025\n\n\nKevin Quinteros\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "publications.html",
+    "href": "publications.html",
+    "title": "Publications",
+    "section": "",
+    "text": "This is a list of my publications and pre-prints.\nFor the most up-to-date list, please check my ORCID or Google Scholar.\n\n\n1. Zhao, Z., Quinteros, K. & Machado, C. A. Evolutionary consequences of unusually large pericentric TE-rich regions in the genome of a neotropical fig wasp. Genome Biology and Evolution 17, evaf158 (2025).\n\n\n2. Cordero, G. A., Quinteros, K. & Janzen, F. J. Delayed trait development and the convergent evolution of shell kinesis in turtles. Proceedings of the Royal Society B: Biological Sciences 285, 20181585 (2018).\n\n\n3. Cordero, G. A. et al. Gene network variation and alternative paths to convergent evolution in turtles. Evolution & Development 20, 172–185 (2018).\n\n\n4. Cordero, G. A. et al. The postembryonic transformation of the shell in emydine box turtles. Evolution & Development 21, 297–310 (2019).\n\n\n5. Cordero, G. A. & Quinteros, K. Skeletal remodelling suggests the turtle’s shell is not an evolutionary straitjacket. Biology Letters 11, 20150022 (2015).\n\n\n6. Kevin Quinteros. An integrated approach to studying the coevolution of the Fig and Fig-Wasp Mutualism. (Iowa State University, Ames, IA, 2022). doi:10.31274/td-20240329-59.\n\n\n7. Quinteros, K., Piatscheck, F., Satler, J., et al. Comparative phylogeography of mexican rock fig (ficus petiolaris) and its fig wasp pollinator: Effects of abiotic versus biotic factors. Authorea https://doi.org/10.22541/au.171178184.46423166/v1 (2024) doi:10.22541/au.171178184.46423166/v1."
+  }
+]

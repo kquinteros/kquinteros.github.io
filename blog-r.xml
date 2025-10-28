@@ -1,0 +1,837 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss  xmlns:atom="http://www.w3.org/2005/Atom" 
+      xmlns:media="http://search.yahoo.com/mrss/" 
+      xmlns:content="http://purl.org/rss/1.0/modules/content/" 
+      xmlns:dc="http://purl.org/dc/elements/1.1/" 
+      version="2.0">
+<channel>
+<title>Kevin Quinteros</title>
+<link>kquinteros.github.io/blog.html#category=R</link>
+<atom:link href="kquinteros.github.io/blog-r.xml" rel="self" type="application/rss+xml"/>
+<description></description>
+<generator>quarto-1.8.24</generator>
+<lastBuildDate>Fri, 18 Jul 2025 04:00:00 GMT</lastBuildDate>
+<item>
+  <title>Mapping the Distribution of Ficus aurea and Ficus citrifolia individuals in Florida State Parks</title>
+  <dc:creator>Kevin Quinteros</dc:creator>
+  <link>kquinteros.github.io/posts/2025-10-27-map-dist/2025-10-27.html</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<section id="overview" class="level2">
+<h2 class="anchored" data-anchor-id="overview">Overview</h2>
+<p>I recently had to plot the locality data from our field work done in Florida State Park. Using R’s spatial data visualization tools, I combined occurrence records, park boundaries, and elevation data to show the locality of individuals that were geo-referenced.</p>
+<hr>
+</section>
+<section id="data-sources" class="level2">
+<h2 class="anchored" data-anchor-id="data-sources">Data Sources</h2>
+<p>I used shapefiles of the state of Florida and its state park boundaries. These shapefiles are publicly available, and I have provided the links below for anyone who wishes to use them.</p>
+<p><strong>Input Data:</strong></p>
+<ol type="1">
+<li><p>Individual coordinate data.</p></li>
+<li><p><a href="https://gis-fdot.opendata.arcgis.com/datasets/fdot::detailed-florida-state-boundary/about">Detailed_Florida_State_Boundary.shp<em>: High-resolution Florida boundary shapefile.</em></a></p></li>
+<li><p><a href="https://geodata.dep.state.fl.us/datasets/FDEP::florida-state-parks-boundaries/about"><em>Florida_State_Parks_Boundaries.shp</em>: Shapefiles for all Florida State Parks.</a></p></li>
+</ol>
+<p><strong>Output:</strong></p>
+<ul>
+<li>maps visualizing collection distributions.</li>
+</ul>
+</section>
+<section id="r-packages-used" class="level2">
+<h2 class="anchored" data-anchor-id="r-packages-used">R Packages Used</h2>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(tidyverse)</span>
+<span id="cb1-2"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(ggplot2)</span>
+<span id="cb1-3"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(cowplot)</span>
+<span id="cb1-4"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(sf)</span>
+<span id="cb1-5"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(wesanderson)</span></code></pre></div></div>
+</details>
+</div>
+<hr>
+</section>
+<section id="loading-and-cleaning-occurrence-data" class="level2">
+<h2 class="anchored" data-anchor-id="loading-and-cleaning-occurrence-data">Loading and Cleaning Occurrence Data</h2>
+<p>I have preloaded my data. You can load your own data or occurrence data which I have provided in the github foilder associated with this post. - <a href="[resource []{.quarto-shortcode__-param data-is-shortcode=&quot;1&quot; data-value=&quot;Florida-Ficus-Occurrence-Collections-Update-June-2025.csv&quot; data-raw=&quot;&quot;Florida-Ficus-Occurrence-Collections-Update-June-2025.csv&quot;&quot;} ]{.quarto-shortcode__ data-is-shortcode=&quot;1&quot; data-raw=&quot;{{< resource &quot;Florida-Ficus-Occurrence-Collections-Update-June-2025.csv&quot; >}}&quot;}">Ficus occurrence data</a></p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>Reading layer `Florida_State_Parks_Boundaries' from data source 
+  `/Users/kq/Projects/kquinteros_website/posts/2025-10-27-map-dist/Florida_State_Parks_Boundaries/Florida_State_Parks_Boundaries.shp' 
+  using driver `ESRI Shapefile'
+Simple feature collection with 178 features and 15 fields
+Geometry type: MULTIPOLYGON
+Dimension:     XY
+Bounding box:  xmin: 65060.63 ymin: 62239.01 xmax: 793312 ymax: 758319.8
+Projected CRS: NAD83(2011) / Florida GDL Albers</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Reading layer `Detailed_Florida_State_Boundary' from data source 
+  `/Users/kq/Projects/kquinteros_website/posts/2025-10-27-map-dist/Detailed_Florida_State_Boundary/Detailed_Florida_State_Boundary.shp' 
+  using driver `ESRI Shapefile'
+Simple feature collection with 1 feature and 6 fields
+Geometry type: MULTIPOLYGON
+Dimension:     XY
+Bounding box:  xmin: -134968.2 ymin: 2712255 xmax: 596284 ymax: 3448075
+Projected CRS: NAD83 / UTM zone 17N</code></pre>
+</div>
+</div>
+<p>To start, we’ll tidy up the data and pick the state parks where we want to visualize our occurrence records.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># select ficus occurrence that occur in state park</span></span>
+<span id="cb4-2">species_occ <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> species_occ[species_occ<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>Locality <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%in%</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(</span>
+<span id="cb4-3">  <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Fakahatchee State Park"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Estero Bay"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Dr. Von D. Mizell State Park"</span>,</span>
+<span id="cb4-4">  <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Hugh Taylor Birch State Park"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Bill Baggs state Park"</span>,</span>
+<span id="cb4-5">  <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Oleta River State Park"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Charlotte Harbor Preserve State Park"</span></span>
+<span id="cb4-6">),]</span>
+<span id="cb4-7"></span>
+<span id="cb4-8"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#clean up species names and edit state park names in our occurence csv so they match the official state park titles.</span></span>
+<span id="cb4-9">species_occ <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> species_occ <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span></span>
+<span id="cb4-10">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mutate</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">Species =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">case_when</span>(</span>
+<span id="cb4-11">    Species <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Aurea/Citrifolia?"</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Hybrid"</span>,</span>
+<span id="cb4-12">    Species <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Aurea?"</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Unknown"</span>,</span>
+<span id="cb4-13">    <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">TRUE</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span> Species</span>
+<span id="cb4-14">  )) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span></span>
+<span id="cb4-15">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mutate</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">Locality =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">case_when</span>(</span>
+<span id="cb4-16">    Locality <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Fakahatchee State Park"</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Fakahatchee Strand Preserve State Park"</span>,</span>
+<span id="cb4-17">    Locality <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Estero Bay"</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Estero Bay Preserve State Park"</span>,</span>
+<span id="cb4-18">    Locality <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Bill Baggs state Park"</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Bill Baggs Cape Florida State Park"</span>,</span>
+<span id="cb4-19">    Locality <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Dr. Von D. Mizell State Park"</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Dr. Von D. Mizell-Eula Johnson State Park"</span>,</span>
+<span id="cb4-20">    <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">TRUE</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span> Locality</span>
+<span id="cb4-21">  ))</span></code></pre></div></div>
+</details>
+</div>
+<hr>
+</section>
+<section id="spatial-data-for-florida-state-and-parks" class="level2">
+<h2 class="anchored" data-anchor-id="spatial-data-for-florida-state-and-parks">Spatial Data for Florida State and Parks</h2>
+<p>Next, we have to subset our florida state parks shape files. Additional, we don’t need to show the whole state of Florida, so we will crop the shapefile for the state to only focus on southern Florida.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#subset our shape files. </span></span>
+<span id="cb5-2">fl_parks <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> fl_parks <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">filter</span>(SITE_NAME <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%in%</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(</span>
+<span id="cb5-3">  <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Charlotte Harbor Preserve State Park"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Estero Bay Preserve State Park"</span>,</span>
+<span id="cb5-4">  <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Fakahatchee Strand Preserve State Park"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Bill Baggs Cape Florida State Park"</span>,</span>
+<span id="cb5-5">  <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Dr. Von D. Mizell-Eula Johnson State Park"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Hugh Taylor Birch State Park"</span>,</span>
+<span id="cb5-6">  <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Oleta River State Park"</span></span>
+<span id="cb5-7">))</span>
+<span id="cb5-8"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#transform data</span></span>
+<span id="cb5-9">state <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">st_transform</span>(state, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">4326</span>)</span>
+<span id="cb5-10"></span>
+<span id="cb5-11"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#crop our Florida state park to only show southern Florida instead of the whole state.</span></span>
+<span id="cb5-12">south_florida_bbox <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">st_bbox</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">xmin =</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span><span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">82.9</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">ymin =</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">24.9</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">xmax =</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span><span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">79.8</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">ymax =</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">27.6</span>), <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">crs =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">st_crs</span>(state))</span>
+<span id="cb5-13">south_florida <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">st_crop</span>(state, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">st_as_sfc</span>(south_florida_bbox))</span></code></pre></div></div>
+</details>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: attribute variables are assumed to be spatially constant throughout
+all geometries</code></pre>
+</div>
+</div>
+<hr>
+</section>
+<section id="mapping-the-distribution" class="level2">
+<h2 class="anchored" data-anchor-id="mapping-the-distribution">Mapping the Distribution</h2>
+<p>Now, we are ready to plot our data</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb7-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_sf</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">data =</span> south_florida, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">fill =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"antiquewhite"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">color =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"black"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#shapefile for south Florida)</span></span>
+<span id="cb7-3">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_sf</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">data =</span> fl_parks, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">fill =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"forestgreen"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">alpha =</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.5</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">color =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"darkgreen"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span>  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#shape file for florida state parks</span></span>
+<span id="cb7-4">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_point</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">data =</span> species_occ, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> Lon, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> Lat, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">fill =</span> Species), <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">shape=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">21</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">color=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"black"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">size=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># ficus occurrence data</span></span>
+<span id="cb7-5">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">labs</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">title =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Ficus Occurrences in Florida State Parks"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># title</span></span>
+<span id="cb7-6">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">scale_fill_manual</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">values =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">wes_palette</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Darjeeling1"</span>)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># using the wes anderson color palette here</span></span>
+<span id="cb7-7">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">coord_sf</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">xlim =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span><span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">82.7</span>, <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span><span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">79.8</span>), <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">ylim =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">24.8</span>, <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">27.5</span>), <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">expand =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">FALSE</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># adjust the size of the map</span></span>
+<span id="cb7-8">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">theme_cowplot</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb7-9">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">theme</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">panel.background =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">element_rect</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">fill =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"aliceblue"</span>), <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># all the setting below adjust title and other plot properties</span></span>
+<span id="cb7-10">        <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">plot.title =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">element_text</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">hjust =</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.5</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">face =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"bold"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">size =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">10</span>),</span>
+<span id="cb7-11">        <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">axis.title.x =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">element_blank</span>(),</span>
+<span id="cb7-12">        <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">axis.title.y =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">element_blank</span>(),</span>
+<span id="cb7-13">        <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">panel.grid.major =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">element_blank</span>(),</span>
+<span id="cb7-14">        <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">panel.grid.minor =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">element_blank</span>(),</span>
+<span id="cb7-15">        <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">panel.border =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">element_rect</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">colour =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"black"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">fill=</span><span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">NA</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">size=</span><span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1.5</span>),</span>
+<span id="cb7-16">        <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">text =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">element_text</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">size =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">10</span>))</span></code></pre></div></div>
+</details>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: The `size` argument of `element_rect()` is deprecated as of ggplot2 3.4.0.
+i Please use the `linewidth` argument instead.</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="kquinteros.github.io/posts/2025-10-27-map-dist/2025-10-27_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<hr>
+</section>
+<section id="individual-park-maps" class="level2">
+<h2 class="anchored" data-anchor-id="individual-park-maps">Individual Park Maps</h2>
+<p>Now we have a plot showing Ficus occurrences across all the state parks where we collected data. However, we also want to visualize the occurrences for individual parks. Instead of writing the same code for each park, we can automate this process by creating a loop.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">for</span> (park <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">in</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">unique</span>(fl_parks<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>SITE_NAME)) { <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#start the loop</span></span>
+<span id="cb9-2">  park_poly <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> fl_parks[fl_parks<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>SITE_NAME <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> park, ] <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#select the park where we are mapping</span></span>
+<span id="cb9-3">  park_occ  <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> species_occ[species_occ<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>Locality <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> park, ] <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#select individual that were collected in that park</span></span>
+<span id="cb9-4">  <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">if</span> (<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">nrow</span>(park_poly) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">||</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">st_is_empty</span>(park_poly) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">||</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">!</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">st_is_valid</span>(park_poly)) <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">next</span> <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># check that our shapefile is not empty</span></span>
+<span id="cb9-5">  <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">if</span> (<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">st_crs</span>(park_poly) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">!=</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">st_crs</span>(state)) park_poly <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">st_transform</span>(park_poly, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">crs =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">st_crs</span>(state))</span>
+<span id="cb9-6">  safe_name <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">str_replace_all</span>(park, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"[^A-Za-z0-9]"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"_"</span>)</span>
+<span id="cb9-7">  bbox <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">st_bbox</span>(park_poly)</span>
+<span id="cb9-8">  pad <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.01</span> <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># padding parameter f</span></span>
+<span id="cb9-9">  xlim <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">as.numeric</span>(bbox<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>xmin) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span> pad, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">as.numeric</span>(bbox<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>xmax) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> pad) <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># create a small margin for the graph based on shapefile of park</span></span>
+<span id="cb9-10">  ylim <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">as.numeric</span>(bbox<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>ymin) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span> pad, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">as.numeric</span>(bbox<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>ymax) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> pad)</span>
+<span id="cb9-11">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">print</span>(</span>
+<span id="cb9-12">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb9-13">      <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_sf</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">data =</span> state, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">fill =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"antiquewhite"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">color =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"black"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb9-14">      <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_sf</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">data =</span> park_poly, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">fill =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"forestgreen"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">alpha =</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.6</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">color =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"darkgreen"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb9-15">      <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_point</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">data =</span> park_occ, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> Lon, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> Lat, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">fill =</span> Species), <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">shape=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">21</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">color=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"black"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">size=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb9-16">      <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">coord_sf</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">xlim =</span> xlim, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">ylim =</span> ylim) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb9-17">      <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">theme_cowplot</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb9-18">      <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">labs</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">title =</span> park) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb9-19">      <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">scale_fill_manual</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">values =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">wes_palette</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Darjeeling1"</span>))</span>
+<span id="cb9-20">  )</span>
+<span id="cb9-21">}</span></code></pre></div></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="kquinteros.github.io/posts/2025-10-27-map-dist/2025-10-27_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="kquinteros.github.io/posts/2025-10-27-map-dist/2025-10-27_files/figure-html/unnamed-chunk-6-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="kquinteros.github.io/posts/2025-10-27-map-dist/2025-10-27_files/figure-html/unnamed-chunk-6-3.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="kquinteros.github.io/posts/2025-10-27-map-dist/2025-10-27_files/figure-html/unnamed-chunk-6-4.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="kquinteros.github.io/posts/2025-10-27-map-dist/2025-10-27_files/figure-html/unnamed-chunk-6-5.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+
+
+</section>
+
+ ]]></description>
+  <category>Biodiversity</category>
+  <category>Spatial Analysis</category>
+  <category>R</category>
+  <guid>kquinteros.github.io/posts/2025-10-27-map-dist/2025-10-27.html</guid>
+  <pubDate>Fri, 18 Jul 2025 04:00:00 GMT</pubDate>
+  <media:content url="kquinteros.github.io/posts/2025-10-27-map-dist/Estero_Bay_Preserve_State_Park_map.png" medium="image" type="image/png" height="144" width="144"/>
+</item>
+</channel>
+</rss>

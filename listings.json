@@ -1,0 +1,15 @@
+[
+  {
+    "listing": "/blog.html",
+    "items": [
+      "/posts/2025-10-27-map-dist/2025-10-27.html"
+    ]
+  },
+  {
+    "listing": "/projects.html",
+    "items": [
+      "/projects/Test/project1.html",
+      "/projects/chemical_ecology/chemical-ecology.html"
+    ]
+  }
+]

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss  xmlns:atom="http://www.w3.org/2005/Atom" 
+      xmlns:media="http://search.yahoo.com/mrss/" 
+      xmlns:content="http://purl.org/rss/1.0/modules/content/" 
+      xmlns:dc="http://purl.org/dc/elements/1.1/" 
+      version="2.0">
+<channel>
+<title>Kevin Quinteros</title>
+<link>kquinteros.github.io/projects.html</link>
+<atom:link href="kquinteros.github.io/projects.xml" rel="self" type="application/rss+xml"/>
+<description></description>
+<generator>quarto-1.8.24</generator>
+<lastBuildDate>Mon, 27 Oct 2025 04:00:00 GMT</lastBuildDate>
+<item>
+  <title>Genomic Adaptation in Fig Wasps</title>
+  <dc:creator>Kevin Quinteros</dc:creator>
+  <link>kquinteros.github.io/projects/Test/project1.html</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<section id="overview" class="level3">
+<h3 class="anchored" data-anchor-id="overview">Overview</h3>
+<p>This project investigates genomic divergence in <em>Pegoscapus</em> fig wasps and how it contributes to adaptation and speciation.</p>
+</section>
+<section id="methods" class="level3">
+<h3 class="anchored" data-anchor-id="methods">Methods</h3>
+<ul>
+<li>Whole-genome sequencing (PacBio HiFi + Illumina)</li>
+<li>Population genomics analyses (π, dXY, F_ST)</li>
+<li>Selection scans across chemosensory genes</li>
+</ul>
+</section>
+<section id="results" class="level3">
+<h3 class="anchored" data-anchor-id="results">Results</h3>
+<p>[Insert plots or figures here]</p>
+
+
+</section>
+
+ ]]></description>
+  <guid>kquinteros.github.io/projects/Test/project1.html</guid>
+  <pubDate>Mon, 27 Oct 2025 04:00:00 GMT</pubDate>
+  <media:content url="kquinteros.github.io/projects/Test/Pegoscapus.png" medium="image" type="image/png" height="150" width="144"/>
+</item>
+<item>
+  <title>Chemical Ecology of Figs</title>
+  <dc:creator>Kevin Quinteros</dc:creator>
+  <link>kquinteros.github.io/projects/chemical_ecology/chemical-ecology.html</link>
+  <description><![CDATA[ 
+
+
+
+
+
+
+
+
+ ]]></description>
+  <guid>kquinteros.github.io/projects/chemical_ecology/chemical-ecology.html</guid>
+  <pubDate>Mon, 27 Oct 2025 04:00:00 GMT</pubDate>
+  <media:content url="kquinteros.github.io/projects/chemical_ecology/fig-volatiles.jpeg" medium="image" type="image/jpeg"/>
+</item>
+</channel>
+</rss>
