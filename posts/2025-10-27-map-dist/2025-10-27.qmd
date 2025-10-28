@@ -56,7 +56,7 @@ library(wesanderson)
 
 ## Loading and Cleaning Occurrence Data
 
-I have preloaded my data. You can load your own data or occurrence data which I have provided in the github foilder associated with this post. - \[Ficus occurrence data\]({{< resource "Florida-Ficus-Occurrence-Collections-Update-June-2025.csv" >}})
+I have preloaded my data. You can load your own data or the occurrence data provided in the GitHub folder associated with this post- [Ficus occurrence data](#0) \[Ficus occurrence data\]
 
 ```{r}
 #| label: get_data
