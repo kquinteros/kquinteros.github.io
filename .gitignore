@@ -5,3 +5,17 @@ _site
 
 /.quarto/
 **/*.quarto_ipynb
+
+# RStudio / R projects (if applicable)
+.Rhistory
+.RData
+.Rproj.user
+
+
+#Blog post data
+posts/*/data/
+
+
+# OS files
+.DS_Store
+Thumbs.db
