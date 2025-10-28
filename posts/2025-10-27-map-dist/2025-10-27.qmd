@@ -64,9 +64,10 @@ I have preloaded my data. You can load your own data or occurrence data which I 
 #| echo: false
 #| warning: false
 #| message: false
-species_occ <- read.csv("Florida-Ficus-Occurrence-Collections-Update-June-2025.csv")
-fl_parks <- st_read("Florida_State_Parks_Boundaries/Florida_State_Parks_Boundaries.shp")
-state <- st_read("Detailed_Florida_State_Boundary/Detailed_Florida_State_Boundary.shp")
+
+species_occ <- read.csv("posts/2025-10-27-map-dist/Florida-Ficus-Occurrence-Collections-Update-June-2025.csv")
+fl_parks <- st_read("posts/2025-10-27-map-dist/data/Florida_State_Parks_Boundaries/Florida_State_Parks_Boundaries.shp")
+state <- st_read("posts/2025-10-27-map-dist/data/Detailed_Florida_State_Boundary/Detailed_Florida_State_Boundary.shp")
 ```
 
 To start, we’ll tidy up the data and pick the state parks where we want to visualize our occurrence records.
