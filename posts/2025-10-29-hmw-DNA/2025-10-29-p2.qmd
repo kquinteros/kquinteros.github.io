@@ -22,11 +22,11 @@ resources:
 
 High-molecular-weight (HMW) DNA is crucial for modern long-read sequencing technologies, including PacBio HiFi and Oxford Nanopore. However, isolating intact DNA from *Ficus* leaves is challenging due to the presence of secondary metabolites. Fig wasps also pose a challenge due to their small size. Therefore, DNA extractions on these specimens require careful optimization to prevent shearing and contamination.
 
-I am sharing the DNA extraction protocol we use in out lab. It is a **modified Qiagen Genomic-tip protocol** developed to maximize DNA yield and integrity while minimizing degradation.
+I am sharing the DNA extraction protocol we use in out lab. They are a **modified Qiagen Genomic-tip protocol** developed to maximize DNA yield and integrity while minimizing degradation. Both protocols can be found here.
 
 ## DNA Extraction from *Ficus* Leaves
 
-The extraction of HMW DNA from *Ficus aurea* and *Ficus citrifolia* was adjusted to overcome the challenges posed by secondary metabolites, polysaccharides, and thick cuticles typical of *Ficus* species.
+The extraction of HMW DNA from *Ficus aurea* and *Ficus citrifolia* was adjusted to overcome the challenges posed by secondary metabolites, polysaccharides, and thick cuticles typical of *Ficus* species. We heavily reference this [user-developed Qiagen protocol](https://www.qiagen.com/us/resources/resourcedetail?id=cb2ac658-8d66-43f0-968e-7bb0ea2c402a&lang=en).
 
 ### Important Notes:
 
@@ -40,7 +40,7 @@ The extraction of HMW DNA from *Ficus aurea* and *Ficus citrifolia* was adjusted
 
 ## DNA Extraction from Fig Wasps
 
-Extracting DNA from fig wasps posed different challenges due to their small size, chitinous exoskeletons, and low DNA yield. This required maximizing lysis efficiency while minimizing DNA fragmentation. We heavily reference this [user-developed Qiagen protocol](https://www.qiagen.com/us/resources/resourcedetail?id=cb2ac658-8d66-43f0-968e-7bb0ea2c402a&lang=en).
+Extracting DNA from fig wasps posed different challenges due to their small size, chitinous exoskeletons, and low DNA yield. This required maximizing lysis efficiency while minimizing DNA fragmentation.
 
 ### Key modifications
 
