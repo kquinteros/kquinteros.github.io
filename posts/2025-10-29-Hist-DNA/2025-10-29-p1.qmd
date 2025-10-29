@@ -1,6 +1,5 @@
 ---
 title: "Extracting Historical DNA from Ficus leaves"
-author: "Kevin Quinteros"
 date: 2025-10-29
 categories: [DNA, NGS, Molecular Biology]
 image: Estero_Bay_Preserve_State_Park_map.png

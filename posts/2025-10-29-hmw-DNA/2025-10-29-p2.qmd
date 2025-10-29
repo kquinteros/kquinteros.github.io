@@ -22,7 +22,7 @@ resources:
 
 High-molecular-weight (HMW) DNA is crucial for modern long-read sequencing technologies, including PacBio HiFi and Oxford Nanopore. However, isolating intact DNA from *Ficus* leaves is challenging due to the presence of secondary metabolites. Fig wasps also pose a challenge due to their small size. Therefore, DNA extractions on these specimens require careful optimization to prevent shearing and contamination.
 
-I am sharing the DNA extraction protocol we use in out lab. They are a **modified Qiagen Genomic-tip protocol** developed to maximize DNA yield and integrity while minimizing degradation. Both protocols can be found here.
+I am sharing the DNA extraction protocol we use in our lab. They are a **modified Qiagen Genomic-tip protocol** developed to maximize DNA yield and integrity while minimizing degradation. [Both protocols can be found here.](https://github.com/kquinteros/kquinteros.github.io/tree/main/posts/2025-10-29-hmw-DNA)
 
 ## DNA Extraction from *Ficus* Leaves
 
@@ -53,7 +53,6 @@ Extracting DNA from fig wasps posed different challenges due to their small size
 -   **Precipitation and resuspension**: DNA was precipitated using isopropanol + glycogen, washed with 70% ethanol, air-dried, and resuspended in 10 mM Tris (pH 8.5).\
 
 -   **Storage**: Samples were kept at 4 °C and never frozen to maintain DNA integrity.
-
 
 ## Notes on Quality and Integrity
 

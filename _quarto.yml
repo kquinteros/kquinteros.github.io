@@ -11,8 +11,6 @@ website:
       - publications.qmd
       - projects.qmd
       - blog.qmd
-      - icon: rss
-        href: index.xml
   page-footer:
     left: "© Copyright 2025 Kevin Quinteros. Except where otherwise noted, all text and images licensed CC-BY-NC 4.0."
 format:
