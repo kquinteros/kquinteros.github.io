@@ -11,3 +11,9 @@ title-block-banner: true
 comments:
   utterances:
     repo: kquinteros/phylofignatico-comments
+
+
+# my author info ----
+author:
+  - name: Kevin Quinteros
+    orcid: 0000-0002-7121-129X

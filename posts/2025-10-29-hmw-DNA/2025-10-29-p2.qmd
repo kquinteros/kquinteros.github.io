@@ -1,0 +1,66 @@
+---
+title: "Extracting High-Molecular-Weight DNA from Ficus Leaves and Fig Wasps"
+date: 2025-10-29
+categories: [DNA, NGS, Genomics]
+image: hmw_dna_fig_wasp_ficus.png
+description: "A step-by-step overview of our modified Qiagen protocols for isolating high-molecular-weight genomic DNA from *Ficus* leaves and their pollinating fig wasps, optimized for long-read sequencing."
+format:
+  html:
+    theme: minty
+    toc: false
+    code-fold: true
+navbar:
+  right:
+    - text: "Resume"
+      href: resume.pdf
+resources:
+  - QIAGEN-Genomic-DNA-Extraction-Modified-Protocol-insect-as-input.pdf
+  - QIAGEN-Genomic-DNA-Extraction-Modified-Protocol-plant-and-fungi-as-input.pdf
+---
+
+## Introduction
+
+High-molecular-weight (HMW) DNA is crucial for modern long-read sequencing technologies, including PacBio HiFi and Oxford Nanopore. However, isolating intact DNA from *Ficus* leaves is challenging due to the presence of secondary metabolites. Fig wasps also pose a challenge due to their small size. Therefore, DNA extractions on these specimens require careful optimization to prevent shearing and contamination.
+
+I am sharing the DNA extraction protocol we use in out lab. It is a **modified Qiagen Genomic-tip protocol** developed to maximize DNA yield and integrity while minimizing degradation.
+
+## DNA Extraction from *Ficus* Leaves
+
+The extraction of HMW DNA from *Ficus aurea* and *Ficus citrifolia* was adjusted to overcome the challenges posed by secondary metabolites, polysaccharides, and thick cuticles typical of *Ficus* species.
+
+### Important Notes:
+
+-   **Custom lysis buffer**: The extraction buffer included EDTA (20 mM), Tris (10 mM), 1% Triton X-100, 500 mM Guanidine HCl, 200 mM NaCl, 2% PVP, and 6 mg/mL Viscozyme to degrade cell wall components and bind polyphenols.
+-   **Fresh young leaves:** Young leaves tend to have a higher density of DNA content and lower levels of secondary metabolites.\
+-   **Low-shear homogenization**: Leaf tissue (400–650 mg) was ground in liquid nitrogen to prevent thermal degradation.\
+-   **Sequential enzymatic digestion**: RNase A (20 µg/mL) and Proteinase K (0.4–0.8 mg/mL) incubations ensured clean removal of RNA and proteins.\
+-   **Gravity flow filtration**: Lysates were filtered through Miracloth to remove debris before passing through Qiagen Genomic-tips.\
+-   **Cold precipitation**: DNA was precipitated with 0.7 vol isopropanol and 1 µL glycogen, followed by 70% ethanol washes.\
+-   **Gentle resuspension**: DNA was air-dried and resuspended in 10 mM Tris (pH 8.5) overnight at 4 °C. **Never freeze the DNA extractions**, to preserve DNA length./
+
+## DNA Extraction from Fig Wasps
+
+Extracting DNA from fig wasps posed different challenges due to their small size, chitinous exoskeletons, and low DNA yield. This required maximizing lysis efficiency while minimizing DNA fragmentation. We heavily reference this [user-developed Qiagen protocol](https://www.qiagen.com/us/resources/resourcedetail?id=cb2ac658-8d66-43f0-968e-7bb0ea2c402a&lang=en).
+
+### Key modifications
+
+-   **Pre-cooling and homogenization**: Wasps were flash-frozen and finely ground in liquid nitrogen using pre-chilled mortars and pestles. This rapid freezing not only preserves DNA integrity but also reduces the release of eye pigments, which can inhibit downstream extraction steps.
+
+-   **Lysis buffer**: Samples were incubated in Buffer G2 supplemented with RNase A (100 µg/mL) and Proteinase K for 2 hours at 50 °C, with gentle mixing.\
+
+-   **Genomic-tip purification**: Lysates were passed through pre-equilibrated Qiagen Genomic-tips with Buffer QBT, washed three times with Buffer QC, and eluted twice with 50 °C Buffer QF.\
+
+-   **Precipitation and resuspension**: DNA was precipitated using isopropanol + glycogen, washed with 70% ethanol, air-dried, and resuspended in 10 mM Tris (pH 8.5).\
+
+-   **Storage**: Samples were kept at 4 °C and never frozen to maintain DNA integrity.
+
+
+## Notes on Quality and Integrity
+
+-   **HMW DNA visualization**: Extracted DNA was checked on 0.7% agarose gels for size distribution and degradation. Successful preparations typically showed bands \> 50 kb.\
+-   **Purity metrics**: Ideal 260/280 ≈ 1.8 and 260/230 ≈ 2.0. Lower 230 ratios often indicate the presence of polysaccharide or phenolic contamination.\
+-   **Handling precautions**: All pipetting was done with **wide-bore tips** to reduce shearing.
+
+These extraction methods have produced high-quality HMW DNA suitable for:
+
+-   **PacBio HiFi sequencing** of *Ficus* species and their pollinating wasps.

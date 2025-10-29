@@ -1,0 +1,20 @@
+---
+title: "Extracting Historical DNA from Ficus leaves"
+author: "Kevin Quinteros"
+date: 2025-10-29
+categories: [DNA, NGS, Molecular Biology]
+image: Estero_Bay_Preserve_State_Park_map.png
+description: "A walkthrough of the process for extracting high-quality DNA from historical *Ficus* leaf samples collected across Florida, including challenges with degraded tissue and steps to optimize yield."
+draft: true
+format:
+  html:
+    theme: minty   # light theme
+    toc: true
+    code-fold: true
+---
+
+## Overview
+
+We have a new porject in the lab that is exploring the Populatiuonb genetics of Ficus aurea and Ficus citrifolia. These two speceis are a species complex, so we have expect there to be large popuation strucute and possiblity different species. In the last few weeks we have been working with sameple collected form herbariums samples form the Smithsonian National History Musuem.
+
+We started this porces with samples colelcted form flroida. since both species are native to the United States. We had a lot of success using the Qiagen DNeasy Plant Pro Kit using
