@@ -7,10 +7,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Kevin Quinteros">
-<meta name="dcterms.date" content="2025-10-29">
-<meta name="description" content="A step-by-step overview of our modified Qiagen protocols for isolating high-molecular-weight genomic DNA from Ficus leaves and their pollinating fig wasps, optimized for long-read sequencing.">
+<meta name="dcterms.date" content="2025-10-01">
+<meta name="description" content="Built a new website—migrated from Jekyll + Bootstrap to Quarto!">
 
-<title>Extracting High-Molecular-Weight DNA from Ficus Leaves and Fig Wasps – Kevin Quinteros</title>
+<title>New Website! – Kevin Quinteros</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -76,7 +76,7 @@ ul.task-list li input[type="checkbox"] {
 <link rel="stylesheet" href="../../styles.css">
 </head>
 
-<body class="nav-fixed fullcontent quarto-light">
+<body class="nav-fixed quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top quarto-banner">
@@ -122,16 +122,14 @@ ul.task-list li input[type="checkbox"] {
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">Extracting High-Molecular-Weight DNA from Ficus Leaves and Fig Wasps</h1>
+      <h1 class="title">New Website!</h1>
                   <div>
         <div class="description">
-          A step-by-step overview of our modified Qiagen protocols for isolating high-molecular-weight genomic DNA from <em>Ficus</em> leaves and their pollinating fig wasps, optimized for long-read sequencing.
+          Built a new website—migrated from Jekyll + Bootstrap to Quarto!
         </div>
       </div>
                           <div class="quarto-categories">
-                <div class="quarto-category">DNA</div>
-                <div class="quarto-category">NGS</div>
-                <div class="quarto-category">Genomics</div>
+                <div class="quarto-category">Misc.</div>
               </div>
                   </div>
   </div>
@@ -149,7 +147,7 @@ ul.task-list li input[type="checkbox"] {
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">October 29, 2025</p>
+        <p class="date">October 1, 2025</p>
       </div>
     </div>
     
@@ -160,7 +158,15 @@ ul.task-list li input[type="checkbox"] {
   </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#i-switched-my-website-to-quarto" id="toc-i-switched-my-website-to-quarto" class="nav-link active" data-scroll-target="#i-switched-my-website-to-quarto"><strong>I Switched My Website to Quarto</strong></a></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
 <main class="content quarto-banner-title-block" id="quarto-document-content">
 
@@ -168,63 +174,11 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<section id="introduction" class="level2">
-<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
-<p>High-molecular-weight (HMW) DNA is crucial for modern long-read sequencing technologies, including PacBio HiFi and Oxford Nanopore. However, isolating intact DNA from <em>Ficus</em> leaves is challenging due to the presence of secondary metabolites. Fig wasps also pose a challenge due to their small size. Therefore, DNA extractions on these specimens require careful optimization to prevent shearing and contamination.</p>
-<p>I am sharing the DNA extraction protocol we use in our lab. They are a <strong>modified Qiagen Genomic-tip protocol</strong> developed to maximize DNA yield and integrity while minimizing degradation. <a href="https://github.com/kquinteros/kquinteros.github.io/tree/main/posts/2025-10-29-hmw-DNA">Both protocols can be found here.</a></p>
-</section>
-<section id="dna-extraction-from-ficus-leaves" class="level2">
-<h2 class="anchored" data-anchor-id="dna-extraction-from-ficus-leaves">DNA Extraction from <em>Ficus</em> Leaves</h2>
-<p>The extraction of HMW DNA from <em>Ficus aurea</em> and <em>Ficus citrifolia</em> was adjusted to overcome the challenges posed by secondary metabolites, polysaccharides, and thick cuticles typical of <em>Ficus</em> species. We heavily reference this <a href="https://www.qiagen.com/us/resources/resourcedetail?id=cb2ac658-8d66-43f0-968e-7bb0ea2c402a&amp;lang=en">user-developed Qiagen protocol</a>.</p>
-<section id="important-notes" class="level3">
-<h3 class="anchored" data-anchor-id="important-notes">Important Notes:</h3>
-<ul>
-<li><strong>Custom lysis buffer</strong>: The extraction buffer included EDTA (20 mM), Tris (10 mM), 1% Triton X-100, 500 mM Guanidine HCl, 200 mM NaCl, 2% PVP, and 6 mg/mL Viscozyme to degrade cell wall components and bind polyphenols.</li>
-<li><strong>Fresh young leaves:</strong> Young leaves tend to have a higher density of DNA content and lower levels of secondary metabolites.<br>
-</li>
-<li><strong>Low-shear homogenization</strong>: Leaf tissue (400–650 mg) was ground in liquid nitrogen to prevent thermal degradation.<br>
-</li>
-<li><strong>Sequential enzymatic digestion</strong>: RNase A (20 µg/mL) and Proteinase K (0.4–0.8 mg/mL) incubations ensured clean removal of RNA and proteins.<br>
-</li>
-<li><strong>Gravity flow filtration</strong>: Lysates were filtered through Miracloth to remove debris before passing through Qiagen Genomic-tips.<br>
-</li>
-<li><strong>Cold precipitation</strong>: DNA was precipitated with 0.7 vol isopropanol and 1 µL glycogen, followed by 70% ethanol washes.<br>
-</li>
-<li><strong>Gentle resuspension</strong>: DNA was air-dried and resuspended in 10 mM Tris (pH 8.5) overnight at 4 °C. <strong>Never freeze the DNA extractions</strong>, to preserve DNA length./</li>
-</ul>
-</section>
-</section>
-<section id="dna-extraction-from-fig-wasps" class="level2">
-<h2 class="anchored" data-anchor-id="dna-extraction-from-fig-wasps">DNA Extraction from Fig Wasps</h2>
-<p>Extracting DNA from fig wasps posed different challenges due to their small size, chitinous exoskeletons, and low DNA yield. This required maximizing lysis efficiency while minimizing DNA fragmentation.</p>
-<section id="key-modifications" class="level3">
-<h3 class="anchored" data-anchor-id="key-modifications">Key modifications</h3>
-<ul>
-<li><p><strong>Pre-cooling and homogenization</strong>: Wasps were flash-frozen and finely ground in liquid nitrogen using pre-chilled mortars and pestles. This rapid freezing not only preserves DNA integrity but also reduces the release of eye pigments, which can inhibit downstream extraction steps.</p></li>
-<li><p><strong>Lysis buffer</strong>: Samples were incubated in Buffer G2 supplemented with RNase A (100 µg/mL) and Proteinase K for 2 hours at 50 °C, with gentle mixing.<br>
-</p></li>
-<li><p><strong>Genomic-tip purification</strong>: Lysates were passed through pre-equilibrated Qiagen Genomic-tips with Buffer QBT, washed three times with Buffer QC, and eluted twice with 50 °C Buffer QF.<br>
-</p></li>
-<li><p><strong>Precipitation and resuspension</strong>: DNA was precipitated using isopropanol + glycogen, washed with 70% ethanol, air-dried, and resuspended in 10 mM Tris (pH 8.5).<br>
-</p></li>
-<li><p><strong>Storage</strong>: Samples were kept at 4 °C and never frozen to maintain DNA integrity.</p></li>
-</ul>
-</section>
-</section>
-<section id="notes-on-quality-and-integrity" class="level2">
-<h2 class="anchored" data-anchor-id="notes-on-quality-and-integrity">Notes on Quality and Integrity</h2>
-<ul>
-<li><strong>HMW DNA visualization</strong>: Extracted DNA was checked on 0.7% agarose gels for size distribution and degradation. Successful preparations typically showed bands &gt; 50 kb.<br>
-</li>
-<li><strong>Purity metrics</strong>: Ideal 260/280 ≈ 1.8 and 260/230 ≈ 2.0. Lower 230 ratios often indicate the presence of polysaccharide or phenolic contamination.<br>
-</li>
-<li><strong>Handling precautions</strong>: All pipetting was done with <strong>wide-bore tips</strong> to reduce shearing.</li>
-</ul>
-<p>These extraction methods have produced high-quality HMW DNA suitable for:</p>
-<ul>
-<li><strong>PacBio HiFi sequencing</strong> of <em>Ficus</em> species and their pollinating wasps.</li>
-</ul>
-<p><em>post image credit: © fendy - stock.adobe.com</em></p>
+<section id="i-switched-my-website-to-quarto" class="level2">
+<h2 class="anchored" data-anchor-id="i-switched-my-website-to-quarto"><strong>I Switched My Website to Quarto</strong></h2>
+<p>After a long time using a Jekyll + Bootstrap setup, I finally migrated my website to <strong>Quarto</strong>! Updating my old site had become pretty cumbersome. Every small change required tweaking templates and rebuilding pages manually.</p>
+<p>Since I’ve already been using <strong>Quarto</strong> for my notes, project documentation, and even writing manuscripts, switching my website to the same framework was pretty easy.&nbsp;</p>
+<p>post image credit: © <a href="https://stock.adobe.com/contributor/210391861/arkinasi?load_type=author&amp;prev_url=detail">arkinasi</a> - stock.adobe.com</p>
 
 
 </section>
