@@ -2,17 +2,13 @@
 title: "Extracting High-Molecular-Weight DNA from Ficus Leaves and Fig Wasps"
 date: 2025-10-29
 categories: [DNA, NGS, Genomics]
-image: hmw_dna_fig_wasp_ficus.png
+image: ../../images/DNA-color-AdobeStock_533862779.png
 description: "A step-by-step overview of our modified Qiagen protocols for isolating high-molecular-weight genomic DNA from *Ficus* leaves and their pollinating fig wasps, optimized for long-read sequencing."
 format:
   html:
     theme: minty
     toc: false
     code-fold: true
-navbar:
-  right:
-    - text: "Resume"
-      href: resume.pdf
 resources:
   - QIAGEN-Genomic-DNA-Extraction-Modified-Protocol-insect-as-input.pdf
   - QIAGEN-Genomic-DNA-Extraction-Modified-Protocol-plant-and-fungi-as-input.pdf
@@ -63,3 +59,5 @@ Extracting DNA from fig wasps posed different challenges due to their small size
 These extraction methods have produced high-quality HMW DNA suitable for:
 
 -   **PacBio HiFi sequencing** of *Ficus* species and their pollinating wasps.
+
+*post image credit: © fendy - stock.adobe.com*

@@ -20,3 +20,6 @@ posts/*/data/
 # OS files
 .DS_Store
 Thumbs.db
+
+#image vector files
+images/vector_images/*

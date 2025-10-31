@@ -1,0 +1,20 @@
+---
+title: "New Website!"
+date: 2025-10-01
+categories: [Misc.]
+image: ../../images/Misc_AdobeStock_670426441.png
+description: "Built a new website—migrated from Jekyll + Bootstrap to Quarto!"
+format:
+  html:
+    theme: minty   # light theme
+    toc: true
+    code-fold: true
+---
+
+## **I Switched My Website to Quarto**
+
+After a long time using a Jekyll + Bootstrap setup, I finally migrated my website to **Quarto**! Updating my old site had become pretty cumbersome. Every small change required tweaking templates and rebuilding pages manually.
+
+Since I’ve already been using **Quarto** for my notes, project documentation, and even writing manuscripts, switching my website to the same framework was pretty easy. 
+
+post image credit: © [arkinasi](https://stock.adobe.com/contributor/210391861/arkinasi?load_type=author&prev_url=detail) - stock.adobe.com
