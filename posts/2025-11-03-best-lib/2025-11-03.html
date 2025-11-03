@@ -8,7 +8,7 @@
 
 <meta name="author" content="Kevin Quinteros">
 <meta name="dcterms.date" content="2025-11-03">
-<meta name="description" content="We’ve been testing DNA extraction and BEST library preparation methods on Ficus herbarium samples; some samples are a century old.">
+<meta name="description" content="We’ve been testing DNA extraction and Illumina library preparation methods on Ficus herbarium samples; some samples are a century old!">
 
 <title>DNA Extraction and B.E.S.T. library construction from Herbarium Ficus leaves – Kevin Quinteros</title>
 <style>
@@ -160,7 +160,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <h1 class="title">DNA Extraction and B.E.S.T. library construction from Herbarium Ficus leaves</h1>
                   <div>
         <div class="description">
-          We’ve been testing DNA extraction and BEST library preparation methods on Ficus herbarium samples; some samples are a century old.
+          We’ve been testing DNA extraction and Illumina library preparation methods on Ficus herbarium samples; some samples are a century old!
         </div>
       </div>
                           <div class="quarto-categories">
@@ -213,8 +213,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<p>Over the past few weeks, we’ve been experimenting with DNA extraction and Illumina library construction using <em>Ficus</em> herbarium samples. Some of which are a century old. The library preparation follows the B.E.S.T. protocol (Carøe et al., 2018), which is designed for working with degraded DNA such as that found in museum specimens.</p>
-<p>For the extractions, we used a modified Qiagen DNeasy Plant Mini Kit. A big thank you to the Martin Lab at the NTNU University Museum for sharing their DNA extraction and B.E.S.T. library preparation protocols, which included several very helpful tips. We made a slight modification to the BEST library protocol by using NEB Q5U DNA Polymerase for library indexing and amplification. This polymerase does not require an extended warm start and, importantly, does not stall when encountering uracil, a common feature of damaged or degraded DNA resulting from cytosine deamination.</p>
+<p>Over the past few weeks, we’ve been experimenting with DNA extraction and Illumina library construction using <em>Ficus</em> herbarium samples. Some of which are a century old. The library preparation follows the B.E.S.T. protocol (<a href="https://doi.org/10.1111/2041-210X.12871">Carøe et al., 2018</a>), which is designed for working with degraded DNA such as that found in museum specimens.</p>
+<p>For the DNA extractions, we used a modified protocol of the Qiagen DNeasy Plant Mini Kit. A big thank you to the Martin Lab at the NTNU University Museum for sharing their DNA extraction and B.E.S.T. library preparation protocols, which included very helpful tips. We made a slight modification to the BEST library protocol by using NEB Q5U DNA Polymerase for library indexing and amplification. This polymerase does not require an extended warm start and, importantly, does not stall when encountering uracil, a common feature of damaged or degraded DNA resulting from cytosine deamination.</p>
 <p>Below, we examine the 20 libraries and the DNA extraction we have performed so far. We aim to investigate whether there are any trends or correlations between DNA concentrations and BEST Library concentrations with respect to sample age. I hope this helps us with future DNA constructions.</p>
 <section id="load-in-libraries-and-read" class="level2">
 <h2 class="anchored" data-anchor-id="load-in-libraries-and-read">Load in Libraries and READ</h2>
@@ -233,8 +233,401 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>lib <span class="ot">&lt;-</span> <span class="fu">read_xlsx</span>(<span class="st">"DNA_and_BEST_lib.xlsx"</span>, <span class="at">sheet=</span><span class="st">"Libraries"</span>)</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co">#remove last samples since it is a wasp</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>lib <span class="ot">&lt;-</span> lib[<span class="sc">-</span><span class="dv">20</span>,]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>lib <span class="ot">&lt;-</span> lib[<span class="sc">-</span><span class="dv">20</span>,]</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(dna)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 21%">
+<col style="width: 13%">
+<col style="width: 17%">
+<col style="width: 21%">
+<col style="width: 26%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Sample</th>
+<th style="text-align: right;">DNA_conc.</th>
+<th style="text-align: right;">Sample_input</th>
+<th style="text-align: right;">Collection_Year</th>
+<th style="text-align: left;">Locality</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">FC132.921I</td>
+<td style="text-align: right;">1.30</td>
+<td style="text-align: right;">20.00</td>
+<td style="text-align: right;">1999</td>
+<td style="text-align: left;">Puerto Rico</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">FC89.921I</td>
+<td style="text-align: right;">1.47</td>
+<td style="text-align: right;">10.00</td>
+<td style="text-align: right;">1955</td>
+<td style="text-align: left;">Haiti</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">FA20.921I</td>
+<td style="text-align: right;">1.60</td>
+<td style="text-align: right;">10.00</td>
+<td style="text-align: right;">1930</td>
+<td style="text-align: left;">Domiinican Republic</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">FA59.921I</td>
+<td style="text-align: right;">1.19</td>
+<td style="text-align: right;">10.00</td>
+<td style="text-align: right;">1945</td>
+<td style="text-align: left;">Mexico</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">FC132.proK.922I</td>
+<td style="text-align: right;">13.00</td>
+<td style="text-align: right;">20.00</td>
+<td style="text-align: right;">1999</td>
+<td style="text-align: left;">Puerto Rico</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">FC89.proK.922I</td>
+<td style="text-align: right;">1.29</td>
+<td style="text-align: right;">10.00</td>
+<td style="text-align: right;">1955</td>
+<td style="text-align: left;">Haiti</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">FA20.proK.922I</td>
+<td style="text-align: right;">1.35</td>
+<td style="text-align: right;">10.00</td>
+<td style="text-align: right;">1930</td>
+<td style="text-align: left;">Domiinican Republic</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">FA59.proK.922I</td>
+<td style="text-align: right;">0.35</td>
+<td style="text-align: right;">7.00</td>
+<td style="text-align: right;">1945</td>
+<td style="text-align: left;">Mexico</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">FA26.1021I</td>
+<td style="text-align: right;">1.33</td>
+<td style="text-align: right;">11.00</td>
+<td style="text-align: right;">1957</td>
+<td style="text-align: left;">Guadeloupe</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">FA44.1021I</td>
+<td style="text-align: right;">1.12</td>
+<td style="text-align: right;">11.80</td>
+<td style="text-align: right;">1971</td>
+<td style="text-align: left;">Jamaica</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">FA45.1021I</td>
+<td style="text-align: right;">1.43</td>
+<td style="text-align: right;">12.10</td>
+<td style="text-align: right;">1963</td>
+<td style="text-align: left;">Jamaica</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">FA67.1021I</td>
+<td style="text-align: right;">1.64</td>
+<td style="text-align: right;">10.00</td>
+<td style="text-align: right;">1974</td>
+<td style="text-align: left;">Florida</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">FA68.1021I</td>
+<td style="text-align: right;">39.70</td>
+<td style="text-align: right;">13.40</td>
+<td style="text-align: right;">1961</td>
+<td style="text-align: left;">Florida</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">FA69.1021I</td>
+<td style="text-align: right;">19.60</td>
+<td style="text-align: right;">17.20</td>
+<td style="text-align: right;">1955</td>
+<td style="text-align: left;">Florida</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">FA70.1021I</td>
+<td style="text-align: right;">26.00</td>
+<td style="text-align: right;">17.00</td>
+<td style="text-align: right;">1951</td>
+<td style="text-align: left;">Florida</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">FA73.1021I</td>
+<td style="text-align: right;">7.18</td>
+<td style="text-align: right;">11.20</td>
+<td style="text-align: right;">1950</td>
+<td style="text-align: left;">Florida</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">FA16.1028I</td>
+<td style="text-align: right;">4.81</td>
+<td style="text-align: right;">10.00</td>
+<td style="text-align: right;">1929</td>
+<td style="text-align: left;">Cuba</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">FA17.1028I</td>
+<td style="text-align: right;">10.30</td>
+<td style="text-align: right;">13.30</td>
+<td style="text-align: right;">1957</td>
+<td style="text-align: left;">Domiinican Republic</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">FA63.1028I</td>
+<td style="text-align: right;">1.42</td>
+<td style="text-align: right;">14.40</td>
+<td style="text-align: right;">1973</td>
+<td style="text-align: left;">Nicaragua</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">FA1.1022I</td>
+<td style="text-align: right;">8.41</td>
+<td style="text-align: right;">13.60</td>
+<td style="text-align: right;">1975</td>
+<td style="text-align: left;">Bahamas</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">FA2.1022I</td>
+<td style="text-align: right;">11.20</td>
+<td style="text-align: right;">17.10</td>
+<td style="text-align: right;">1967</td>
+<td style="text-align: left;">Bahamas</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">FA3.1022I</td>
+<td style="text-align: right;">4.22</td>
+<td style="text-align: right;">17.10</td>
+<td style="text-align: right;">1948</td>
+<td style="text-align: left;">Bahamas</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">FA4.1022I</td>
+<td style="text-align: right;">24.90</td>
+<td style="text-align: right;">15.40</td>
+<td style="text-align: right;">1948</td>
+<td style="text-align: left;">Bahamas</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">FA12.1022I</td>
+<td style="text-align: right;">8.08</td>
+<td style="text-align: right;">18.80</td>
+<td style="text-align: right;">1994</td>
+<td style="text-align: left;">Cuba</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">FA15.1022I</td>
+<td style="text-align: right;">33.20</td>
+<td style="text-align: right;">15.40</td>
+<td style="text-align: right;">1941</td>
+<td style="text-align: left;">Cuba</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">FA71.1022I</td>
+<td style="text-align: right;">9.00</td>
+<td style="text-align: right;">15.00</td>
+<td style="text-align: right;">1950</td>
+<td style="text-align: left;">Florida</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">FA72.1022I</td>
+<td style="text-align: right;">14.60</td>
+<td style="text-align: right;">16.24</td>
+<td style="text-align: right;">1940</td>
+<td style="text-align: left;">Florida</td>
+</tr>
+</tbody>
+</table>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(lib)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 14%">
+<col style="width: 21%">
+<col style="width: 21%">
+<col style="width: 13%">
+<col style="width: 18%">
+<col style="width: 9%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Library ID</th>
+<th style="text-align: left;">Sample</th>
+<th style="text-align: right;">Collection_Year</th>
+<th style="text-align: right;">DNA_conc.</th>
+<th style="text-align: right;">Library Conc.</th>
+<th style="text-align: right;">Cycles</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">BL1.1022</td>
+<td style="text-align: left;">FC132.ProkI.922</td>
+<td style="text-align: right;">1999</td>
+<td style="text-align: right;">13.00</td>
+<td style="text-align: right;">0.482</td>
+<td style="text-align: right;">5</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">BL2.1022</td>
+<td style="text-align: left;">FC89.ProkI.922</td>
+<td style="text-align: right;">1955</td>
+<td style="text-align: right;">1.29</td>
+<td style="text-align: right;">0.161</td>
+<td style="text-align: right;">7</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">BL3.1022</td>
+<td style="text-align: left;">FA20.ProkI.922</td>
+<td style="text-align: right;">1930</td>
+<td style="text-align: right;">1.35</td>
+<td style="text-align: right;">0.305</td>
+<td style="text-align: right;">7</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">BL4.1022</td>
+<td style="text-align: left;">FA59.ProkI.922</td>
+<td style="text-align: right;">1945</td>
+<td style="text-align: right;">0.35</td>
+<td style="text-align: right;">0.060</td>
+<td style="text-align: right;">7</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">BL5.1030</td>
+<td style="text-align: left;">FC132.ProkI.922</td>
+<td style="text-align: right;">1999</td>
+<td style="text-align: right;">13.00</td>
+<td style="text-align: right;">5.830</td>
+<td style="text-align: right;">14</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">BL6.1030</td>
+<td style="text-align: left;">FC89.ProkI.922</td>
+<td style="text-align: right;">1955</td>
+<td style="text-align: right;">1.29</td>
+<td style="text-align: right;">6.020</td>
+<td style="text-align: right;">14</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">BL7.1030</td>
+<td style="text-align: left;">FA20.ProkI.922</td>
+<td style="text-align: right;">1930</td>
+<td style="text-align: right;">1.35</td>
+<td style="text-align: right;">7.800</td>
+<td style="text-align: right;">14</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">BL8.1030</td>
+<td style="text-align: left;">FA59.ProkI.922</td>
+<td style="text-align: right;">1945</td>
+<td style="text-align: right;">0.35</td>
+<td style="text-align: right;">3.270</td>
+<td style="text-align: right;">14</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">BL9.1030</td>
+<td style="text-align: left;">FA26.1021I</td>
+<td style="text-align: right;">1957</td>
+<td style="text-align: right;">1.33</td>
+<td style="text-align: right;">0.101</td>
+<td style="text-align: right;">15</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">BL10.1030</td>
+<td style="text-align: left;">FA44.1021I</td>
+<td style="text-align: right;">1971</td>
+<td style="text-align: right;">1.12</td>
+<td style="text-align: right;">4.910</td>
+<td style="text-align: right;">15</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">BL11.1030</td>
+<td style="text-align: left;">FA45.1021I</td>
+<td style="text-align: right;">1963</td>
+<td style="text-align: right;">1.43</td>
+<td style="text-align: right;">3.250</td>
+<td style="text-align: right;">15</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">BL12.1030</td>
+<td style="text-align: left;">FA67.1021I</td>
+<td style="text-align: right;">1974</td>
+<td style="text-align: right;">1.64</td>
+<td style="text-align: right;">4.800</td>
+<td style="text-align: right;">15</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">BL13.1030</td>
+<td style="text-align: left;">FA68.1021I</td>
+<td style="text-align: right;">1961</td>
+<td style="text-align: right;">39.70</td>
+<td style="text-align: right;">16.100</td>
+<td style="text-align: right;">15</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">BL14.1030</td>
+<td style="text-align: left;">FA69.1021I</td>
+<td style="text-align: right;">1955</td>
+<td style="text-align: right;">19.60</td>
+<td style="text-align: right;">3.550</td>
+<td style="text-align: right;">15</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">BL15.1030</td>
+<td style="text-align: left;">FA70.1021I</td>
+<td style="text-align: right;">1951</td>
+<td style="text-align: right;">26.00</td>
+<td style="text-align: right;">17.600</td>
+<td style="text-align: right;">15</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">BL16.1030</td>
+<td style="text-align: left;">FA73.1021I</td>
+<td style="text-align: right;">1950</td>
+<td style="text-align: right;">7.18</td>
+<td style="text-align: right;">10.100</td>
+<td style="text-align: right;">15</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">BL17.1030</td>
+<td style="text-align: left;">FA16.1021I</td>
+<td style="text-align: right;">1929</td>
+<td style="text-align: right;">4.81</td>
+<td style="text-align: right;">11.200</td>
+<td style="text-align: right;">15</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">BL18.1030</td>
+<td style="text-align: left;">FA17.1021I</td>
+<td style="text-align: right;">1957</td>
+<td style="text-align: right;">10.30</td>
+<td style="text-align: right;">15.700</td>
+<td style="text-align: right;">15</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">BL19.1030</td>
+<td style="text-align: left;">FA63.1021I</td>
+<td style="text-align: right;">1973</td>
+<td style="text-align: right;">1.42</td>
+<td style="text-align: right;">5.300</td>
+<td style="text-align: right;">15</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 </section>
 <section id="explorative-statistics" class="level2">
@@ -242,13 +635,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute sample age (if not included)</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>dna <span class="ot">&lt;-</span> dna <span class="sc">%&gt;%</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">SampleAge =</span> <span class="dv">2025</span> <span class="sc">-</span> Collection_Year)</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>lib <span class="ot">&lt;-</span> lib <span class="sc">%&gt;%</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">SampleAge =</span> <span class="dv">2025</span> <span class="sc">-</span> Collection_Year,</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">DNA_input =</span> DNA_conc. <span class="sc">*</span> <span class="dv">16</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute sample age (if not included)</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>dna <span class="ot">&lt;-</span> dna <span class="sc">%&gt;%</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">SampleAge =</span> <span class="dv">2025</span> <span class="sc">-</span> Collection_Year)</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>lib <span class="ot">&lt;-</span> lib <span class="sc">%&gt;%</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">SampleAge =</span> <span class="dv">2025</span> <span class="sc">-</span> Collection_Year,</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">DNA_input =</span> DNA_conc. <span class="sc">*</span> <span class="dv">16</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <section id="summary-statistic-for-dna-extractions" class="level3">
@@ -256,7 +649,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(dna)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(dna)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>    Sample            DNA_conc.       Sample_input   Collection_Year
@@ -276,7 +669,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>dna <span class="sc">%&gt;%</span> <span class="fu">summarise</span>(<span class="fu">across</span>(<span class="fu">where</span>(is.numeric), mean, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>dna <span class="sc">%&gt;%</span> <span class="fu">summarise</span>(<span class="fu">across</span>(<span class="fu">where</span>(is.numeric), mean, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning: There was 1 warning in `summarise()`.
@@ -304,7 +697,7 @@ Supply arguments directly to `.fns` through an anonymous function instead.
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lib)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lib)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>  Library ID           Sample          Collection_Year   DNA_conc.     
@@ -324,7 +717,7 @@ Supply arguments directly to `.fns` through an anonymous function instead.
 </div>
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>lib <span class="sc">%&gt;%</span> <span class="fu">summarise</span>(<span class="fu">across</span>(<span class="fu">where</span>(is.numeric), mean, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>lib <span class="sc">%&gt;%</span> <span class="fu">summarise</span>(<span class="fu">across</span>(<span class="fu">where</span>(is.numeric), mean, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 x 6
@@ -339,35 +732,35 @@ Supply arguments directly to `.fns` through an anonymous function instead.
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(dna<span class="sc">$</span>SampleAge, dna<span class="sc">$</span>DNA_conc., <span class="at">use =</span> <span class="st">"complete.obs"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(dna<span class="sc">$</span>SampleAge, dna<span class="sc">$</span>DNA_conc., <span class="at">use =</span> <span class="st">"complete.obs"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.07591351</code></pre>
 </div>
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(dna<span class="sc">$</span>Sample_input, dna<span class="sc">$</span>DNA_conc., <span class="at">use =</span> <span class="st">"complete.obs"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(dna<span class="sc">$</span>Sample_input, dna<span class="sc">$</span>DNA_conc., <span class="at">use =</span> <span class="st">"complete.obs"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.4233805</code></pre>
 </div>
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(lib<span class="sc">$</span>DNA_input, lib<span class="sc">$</span><span class="st">`</span><span class="at">Library Conc.</span><span class="st">`</span>, <span class="at">use =</span> <span class="st">"complete.obs"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(lib<span class="sc">$</span>DNA_input, lib<span class="sc">$</span><span class="st">`</span><span class="at">Library Conc.</span><span class="st">`</span>, <span class="at">use =</span> <span class="st">"complete.obs"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.6343754</code></pre>
 </div>
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(lib<span class="sc">$</span>Cycles, lib<span class="sc">$</span><span class="st">`</span><span class="at">Library Conc.</span><span class="st">`</span>, <span class="at">use =</span> <span class="st">"complete.obs"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(lib<span class="sc">$</span>Cycles, lib<span class="sc">$</span><span class="st">`</span><span class="at">Library Conc.</span><span class="st">`</span>, <span class="at">use =</span> <span class="st">"complete.obs"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.5686558</code></pre>
 </div>
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(lib<span class="sc">$</span>SampleAge, lib<span class="sc">$</span><span class="st">`</span><span class="at">Library Conc.</span><span class="st">`</span>, <span class="at">use =</span> <span class="st">"complete.obs"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(lib<span class="sc">$</span>SampleAge, lib<span class="sc">$</span><span class="st">`</span><span class="at">Library Conc.</span><span class="st">`</span>, <span class="at">use =</span> <span class="st">"complete.obs"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.142088</code></pre>
@@ -382,11 +775,11 @@ Supply arguments directly to `.fns` through an anonymous function instead.
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(dna, <span class="fu">aes</span>(<span class="at">x =</span> SampleAge, <span class="at">y =</span> DNA_conc.)) <span class="sc">+</span></span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">TRUE</span>, <span class="at">color =</span> <span class="st">"blue"</span>) <span class="sc">+</span></span>
-<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Sample Age (years)"</span>, <span class="at">y =</span> <span class="st">"DNA Extraction Concentration (ng/µL)"</span>,</span>
-<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"Older samples yield less DNA?"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(dna, <span class="fu">aes</span>(<span class="at">x =</span> SampleAge, <span class="at">y =</span> DNA_conc.)) <span class="sc">+</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">TRUE</span>, <span class="at">color =</span> <span class="st">"blue"</span>) <span class="sc">+</span></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Sample Age (years)"</span>, <span class="at">y =</span> <span class="st">"DNA Extraction Concentration (ng/µL)"</span>,</span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"Older samples yield less DNA?"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stderr">
 <pre><code>`geom_smooth()` using formula = 'y ~ x'</code></pre>
@@ -405,11 +798,11 @@ Supply arguments directly to `.fns` through an anonymous function instead.
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(dna, <span class="fu">aes</span>(<span class="at">x =</span> Sample_input, <span class="at">y =</span> DNA_conc.)) <span class="sc">+</span></span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">TRUE</span>, <span class="at">color =</span> <span class="st">"blue"</span>) <span class="sc">+</span></span>
-<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Input Sample Mass (mg)"</span>, <span class="at">y =</span> <span class="st">"DNA Extraction Concentration (ng/µL)"</span>,</span>
-<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">title =</span> <span class="st">"Does input mass affect DNA yield?"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(dna, <span class="fu">aes</span>(<span class="at">x =</span> Sample_input, <span class="at">y =</span> DNA_conc.)) <span class="sc">+</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">TRUE</span>, <span class="at">color =</span> <span class="st">"blue"</span>) <span class="sc">+</span></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Input Sample Mass (mg)"</span>, <span class="at">y =</span> <span class="st">"DNA Extraction Concentration (ng/µL)"</span>,</span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">title =</span> <span class="st">"Does input mass affect DNA yield?"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stderr">
 <pre><code>`geom_smooth()` using formula = 'y ~ x'</code></pre>
@@ -428,11 +821,11 @@ Supply arguments directly to `.fns` through an anonymous function instead.
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(lib, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">log</span>(DNA_input), <span class="at">y =</span> <span class="fu">log</span>(<span class="st">`</span><span class="at">Library Conc.</span><span class="st">`</span>))) <span class="sc">+</span></span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">TRUE</span>, <span class="at">color =</span> <span class="st">"red"</span>) <span class="sc">+</span></span>
-<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Log scale: Input Sample DNA Mass (ng)"</span>, <span class="at">y =</span> <span class="st">"Log scale: Library Concentration (ng/µL)"</span>,</span>
-<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">title =</span> <span class="st">"Does DNA input mass affect final Library Concentration?"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(lib, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">log</span>(DNA_input), <span class="at">y =</span> <span class="fu">log</span>(<span class="st">`</span><span class="at">Library Conc.</span><span class="st">`</span>))) <span class="sc">+</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">TRUE</span>, <span class="at">color =</span> <span class="st">"red"</span>) <span class="sc">+</span></span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Log scale: Input Sample DNA Mass (ng)"</span>, <span class="at">y =</span> <span class="st">"Log scale: Library Concentration (ng/µL)"</span>,</span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">title =</span> <span class="st">"Does DNA input mass affect final Library Concentration?"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stderr">
 <pre><code>`geom_smooth()` using formula = 'y ~ x'</code></pre>
@@ -451,11 +844,11 @@ Supply arguments directly to `.fns` through an anonymous function instead.
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(lib, <span class="fu">aes</span>(<span class="at">x =</span> SampleAge, <span class="at">y =</span> <span class="fu">log</span>(<span class="st">`</span><span class="at">Library Conc.</span><span class="st">`</span>))) <span class="sc">+</span></span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
-<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">TRUE</span>, <span class="at">color =</span> <span class="st">"red"</span>) <span class="sc">+</span></span>
-<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Sample Age (years)"</span>, <span class="at">y =</span> <span class="st">"Log scale: Library Concentration (ng/µL)"</span>,</span>
-<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">title =</span> <span class="st">"Does Sample Age Affect Final Library Concentration?"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(lib, <span class="fu">aes</span>(<span class="at">x =</span> SampleAge, <span class="at">y =</span> <span class="fu">log</span>(<span class="st">`</span><span class="at">Library Conc.</span><span class="st">`</span>))) <span class="sc">+</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">TRUE</span>, <span class="at">color =</span> <span class="st">"red"</span>) <span class="sc">+</span></span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Sample Age (years)"</span>, <span class="at">y =</span> <span class="st">"Log scale: Library Concentration (ng/µL)"</span>,</span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">title =</span> <span class="st">"Does Sample Age Affect Final Library Concentration?"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stderr">
 <pre><code>`geom_smooth()` using formula = 'y ~ x'</code></pre>
@@ -474,13 +867,13 @@ Supply arguments directly to `.fns` through an anonymous function instead.
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(lib, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">factor</span>(Cycles), <span class="at">y =</span> <span class="st">`</span><span class="at">Library Conc.</span><span class="st">`</span>)) <span class="sc">+</span></span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">fill =</span> <span class="st">"steelblue"</span>, <span class="at">alpha =</span> <span class="fl">0.7</span>) <span class="sc">+</span></span>
-<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="at">width =</span> <span class="fl">0.2</span>, <span class="at">alpha =</span> <span class="fl">0.6</span>) <span class="sc">+</span></span>
-<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"PCR Cycles"</span>,</span>
-<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Library Concentration (ng/µL)"</span>,</span>
-<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"Variation in Library Yield Across PCR Cycle Counts"</span>) <span class="sc">+</span></span>
-<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(lib, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">factor</span>(Cycles), <span class="at">y =</span> <span class="st">`</span><span class="at">Library Conc.</span><span class="st">`</span>)) <span class="sc">+</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">fill =</span> <span class="st">"steelblue"</span>, <span class="at">alpha =</span> <span class="fl">0.7</span>) <span class="sc">+</span></span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="at">width =</span> <span class="fl">0.2</span>, <span class="at">alpha =</span> <span class="fl">0.6</span>) <span class="sc">+</span></span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"PCR Cycles"</span>,</span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Library Concentration (ng/µL)"</span>,</span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"Variation in Library Yield Across PCR Cycle Counts"</span>) <span class="sc">+</span></span>
+<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
 <div>
