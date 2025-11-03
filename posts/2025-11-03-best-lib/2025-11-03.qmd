@@ -1,0 +1,149 @@
+---
+title: "DNA Extraction and B.E.S.T. library construction from Herbarium Ficus leaves"
+description: "We’ve been testing DNA extraction and Illumina library preparation methods on Ficus herbarium samples; some samples are a century old!"
+image: ../../images/DNA-color-AdobeStock_533862779.png
+author: "Kevin Quinteros"
+date: "2025-11-03"
+categories: [DNA, Ficus, NGS]   # Customize tags
+draft: false                                # Set true while editing
+format:
+  html:
+    toc: true
+    toc-depth: 2
+    code-fold: true
+---
+
+Over the past few weeks, we’ve been experimenting with DNA extraction and Illumina library construction using *Ficus* herbarium samples. Some of which are a century old. The library preparation follows the B.E.S.T. protocol ([Carøe et al., 2018](https://doi.org/10.1111/2041-210X.12871)), which is designed for working with degraded DNA such as that found in museum specimens.
+
+For the DNA extractions, we used a modified protocol of the Qiagen DNeasy Plant Mini Kit. A big thank you to the Martin Lab at the NTNU University Museum for sharing their DNA extraction and B.E.S.T. library preparation protocols, which included very helpful tips. We made a slight modification to the BEST library protocol by using NEB Q5U DNA Polymerase for library indexing and amplification. This polymerase does not require an extended warm start and, importantly, does not stall when encountering uracil, a common feature of damaged or degraded DNA resulting from cytosine deamination.
+
+Below, we examine the 20 libraries and the DNA extraction we have performed so far. We aim to investigate whether there are any trends or correlations between DNA concentrations and BEST Library concentrations with respect to sample age. I hope this helps us with future DNA constructions.
+
+## Load in Libraries and READ
+
+```{r}
+#| warning: false
+#| message: false
+library("tidyverse")
+library("readxl")
+
+```
+
+Here we are reading in the data for current sample DNA extractions and B.E.S.T. library preparations.
+
+```{r}
+#| label: get_data
+
+dna <- read_xlsx("DNA_and_BEST_lib.xlsx", sheet="DNA")
+lib <- read_xlsx("DNA_and_BEST_lib.xlsx", sheet="Libraries")
+
+#remove last samples since it is a wasp
+lib <- lib[-20,]
+
+knitr::kable(dna)
+knitr::kable(lib)
+```
+
+## Explorative Statistics
+
+```{r}
+# Compute sample age (if not included)
+dna <- dna %>%
+  mutate(SampleAge = 2025 - Collection_Year)
+
+lib <- lib %>%
+    mutate(SampleAge = 2025 - Collection_Year,
+    DNA_input = DNA_conc. * 16)
+```
+
+### Summary Statistic for DNA Extractions
+
+```{r}
+summary(dna)
+dna %>% summarise(across(where(is.numeric), mean, na.rm = TRUE))
+```
+
+### Summary Statistic for Library Preparation
+
+```{r}
+summary(lib)
+lib %>% summarise(across(where(is.numeric), mean, na.rm = TRUE))
+```
+
+### Correlation between variables
+
+```{r}
+cor(dna$SampleAge, dna$DNA_conc., use = "complete.obs")
+cor(dna$Sample_input, dna$DNA_conc., use = "complete.obs")
+cor(lib$DNA_input, lib$`Library Conc.`, use = "complete.obs")
+cor(lib$Cycles, lib$`Library Conc.`, use = "complete.obs")
+cor(lib$SampleAge, lib$`Library Conc.`, use = "complete.obs")
+```
+
+### Visualization
+
+Here we are plotting some of our variable to visualize trends
+
+#### Older samples yield less DNA?
+
+```{r}
+ggplot(dna, aes(x = SampleAge, y = DNA_conc.)) +
+  geom_point(size = 3) +
+  geom_smooth(method = "lm", se = TRUE, color = "blue") +
+  labs(x = "Sample Age (years)", y = "DNA Extraction Concentration (ng/µL)",
+       title = "Older samples yield less DNA?")
+```
+
+#### Does input mass affect DNA yield?
+
+```{r}
+ggplot(dna, aes(x = Sample_input, y = DNA_conc.)) +
+  geom_point(size = 3) +
+  geom_smooth(method = "lm", se = TRUE, color = "blue") +
+  labs(x = "Input Sample Mass (mg)", y = "DNA Extraction Concentration (ng/µL)",
+  title = "Does input mass affect DNA yield?")
+```
+
+#### Does DNA input mass affect final Library Concentration?
+
+```{r}
+ggplot(lib, aes(x = log(DNA_input), y = log(`Library Conc.`))) +
+  geom_point(size = 3) +
+  geom_smooth(method = "lm", se = TRUE, color = "red") +
+  labs(x = "Log scale: Input Sample DNA Mass (ng)", y = "Log scale: Library Concentration (ng/µL)",
+  title = "Does DNA input mass affect final Library Concentration?")
+```
+
+#### Does Sample Age Affect Final Library Concentration?
+
+```{r}
+ggplot(lib, aes(x = SampleAge, y = log(`Library Conc.`))) +
+  geom_point(size = 3) +
+  geom_smooth(method = "lm", se = TRUE, color = "red") +
+  labs(x = "Sample Age (years)", y = "Log scale: Library Concentration (ng/µL)",
+  title = "Does Sample Age Affect Final Library Concentration?")
+```
+
+#### PCR Cycles and Library Concentration
+
+```{r}
+ggplot(lib, aes(x = factor(Cycles), y = `Library Conc.`)) +
+  geom_boxplot(fill = "steelblue", alpha = 0.7) +
+  geom_jitter(width = 0.2, alpha = 0.6) +
+  labs(x = "PCR Cycles",
+       y = "Library Concentration (ng/µL)",
+       title = "Variation in Library Yield Across PCR Cycle Counts") +
+  theme_minimal()
+```
+
+## Conclusion
+
+It appears that the DNA input mass is the primary factor influencing the amount of DNA recovered during the extraction process. Based on these results, we’ll aim for at least **10 mg of tissue** per extraction to ensure we have sufficient material for downstream steps. Currently, we’re eluting in 62 µL, but we plan to reduce this to 50 µL to enhance DNA concentration and increase the total DNA input into our **BEST library prep** (we use 16 µL of extract per reaction). This is a minor modification from the Martin Lab protocol, as we’re performing half-volume reactions to reduce reagent usage and allow more library constructions.
+
+Our next step will be to **run a test sequencing batch** to evaluate how these libraries perform. We didn’t include a size selection step, so we expect a higher number of **short insert-size fragments**. However, we did perform a **1:1 SPRI bead cleanup** after PCR, which should have removed most fragments (plus the 132 bp adapters) below **\~200 bp**, meaning the shortest insert sizes should be around **70 bp**.
+
+We ran an agarose gel on an aliquot of our library to assess the distribution of fragment sizes. Most fragments were approximately 300 bp in length, corresponding to an insert size of around 168 bp. This is on the shorter side for Illumina libraries and is not ideal; however, they still can be used for variant calling. The biggest issues would be inflated duplicate rates, as two reads might map to the exact same location.
+
+One way to improve the **fragment size distribution** would be to perform **size selection before library indexing and amplification**. However, this could significantly reduce the total amount of DNA available for library amplification, which is one of the advantages of the **BEST library protocol** compared to standard Illumina library prep. Another option is to perform **size selection after library amplification**, but this would not eliminate the **PCR bias**, particularly the overrepresentation of shorter fragments.
+
+Another challenge we are currently seeing is that some libraries have very low concentrations, around **3 ng/µL**. If this is due to an excess of smaller fragments, it remains a concern. Increasing PCR cycles may boost yield, but this approach can also increase duplication rates, thereby reducing library complexity.

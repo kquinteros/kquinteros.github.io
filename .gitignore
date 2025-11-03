@@ -23,3 +23,6 @@ Thumbs.db
 
 #image vector files
 images/vector_images/*
+
+#data files
+*.xlsx
