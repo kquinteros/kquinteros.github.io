@@ -15,7 +15,7 @@ $link-color:     $accent;
 $link-hover-color: darken($accent, 10%);
 $table-border-color: lighten($primary, 40%);
 $footer-fg:      $primary;
-$navbar-fg:      $text-dark;
+$navbar-fg:      white;
 $card-bg:        white;
 
 /* Typography */
@@ -91,7 +91,7 @@ a {
 
 .subtitle {
   font-size: 1.2em;
-  color: $text-muted;
+  color: $bg-light;
 }
 
 /* Code blocks */
