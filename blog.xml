@@ -10,7 +10,494 @@
 <atom:link href="https://phylofignatico.com/blog.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.8.24</generator>
-<lastBuildDate>Mon, 03 Nov 2025 05:00:00 GMT</lastBuildDate>
+<lastBuildDate>Tue, 04 Nov 2025 05:00:00 GMT</lastBuildDate>
+<item>
+  <title>Chromosome Conformation Capture (3C): DLO Hi-C</title>
+  <dc:creator>Kevin Quinteros</dc:creator>
+  <link>https://phylofignatico.com/posts/2025-11-04-DLo-HiC/2025-11-04.html</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<section id="overview" class="level2">
+<h2 class="anchored" data-anchor-id="overview">Overview</h2>
+<p>This protocol describes a chromosome conformation capture (3C) sequencing method based on <a href="https://rdcu.be/eN6DV">Lin et al.&nbsp;(2018)</a>. In this approach, the authors developed a simplified digestion-ligation-only Hi-C (DLO-HiC) protocol to explore the 3D organization of the genome. Unlike conventional Hi-C methods, DLO-HiC does not require biotin labeling or pull-down steps and involves only two rounds of digestion and ligation.</p>
+<section id="mechanism-overview" class="level3">
+<h3 class="anchored" data-anchor-id="mechanism-overview">Mechanism overview</h3>
+<ol type="1">
+<li><strong>Restriction digestion</strong> → Genome is cut by your chosen enzyme (e.g., HindIII → 5’-A|AGCTT-3’).<br>
+</li>
+<li><strong>First ligation</strong> → Each DNA end gets ligated to a half-linker with a compatible sticky end (e.g., “AGCT”).<br>
+</li>
+<li><strong>Second ligation</strong> → Two half-linkers (one on each fragment end) are ligated together, joining the two genomic fragments.<br>
+</li>
+<li><strong>MmeI digestion</strong> → MmeI cuts 20 bp away from its site, trimming the junction and leaving a defined short sequence ready for PCR and sequencing.</li>
+</ol>
+<p>After MmeI digestion, the final sequenced molecule looks like:</p>
+<p><code>[Adaptor]–[20 bp genomic fragment 1]–[Linker barcode]–[20 bp genomic fragment 2]–[Adaptor]</code></p>
+</section>
+</section>
+<section id="cell-preparation-and-restriction-enzyme-digestion" class="level2">
+<h2 class="anchored" data-anchor-id="cell-preparation-and-restriction-enzyme-digestion"><strong>1. Cell Preparation and Restriction Enzyme Digestion</strong></h2>
+<p>Prepare prior:</p>
+<p>double cross-linking buffer: <strong>1.5 mM EGS</strong> and <strong>1% formaldehyde</strong></p>
+<ol type="1">
+<li>Homogenize tissue with liquid nitrogen.<br>
+</li>
+<li>Pellet suspended cells by centrifugation at <strong>1,000 rpm for 5 min</strong> and wash once with <strong>ice-cold PBS</strong>. (not sure if necessary if we homogenize with liquid nitrogen)</li>
+<li>to pellet add <u>(How much? 1 mL?)</u> <strong>double cross-linking</strong> buffer containing:
+<ul>
+<li>1.5 mM EGS</li>
+<li>1% formaldehyde</li>
+</ul></li>
+<li>Quench cross-linking with <u>(How much?) 125 uL?</u> <strong>glycine</strong>
+<ul>
+<li>standard concentration is 0.125 M</li>
+</ul></li>
+<li>Lyse cells in <strong>lysis buffer</strong> containing
+<ul>
+<li>10 mM Tris-HCl pH 8.0</li>
+<li>10 mM NaCl</li>
+<li>0.3% Igepal CA-630,</li>
+<li>Complete protease inhibitors</li>
+</ul></li>
+<li>Resuspend nuclei in <strong>100 μL of 1% SDS</strong>, incubate at <strong>60 °C for 5 min</strong>, then place on ice.<br>
+</li>
+<li>Split nuclei into <strong>two 1.5-mL tubes</strong> (Tube A and Tube B).<br>
+</li>
+<li>To each tube, add:
+<ul>
+<li>50 μL 20% Triton X-100<br>
+</li>
+<li>15 μL HindIII (100 U/μL)<br>
+</li>
+<li>385 μL 1.3× NEBuffer 2.1<br>
+</li>
+</ul></li>
+<li>Incubate for <strong>6 h at 37 °C</strong> with rotation at <strong>15 rpm</strong>.</li>
+</ol>
+<hr>
+</section>
+<section id="mmei-half-linker-ligation" class="level2">
+<h2 class="anchored" data-anchor-id="mmei-half-linker-ligation"><strong>2. MmeI Half-Linker Ligation</strong></h2>
+<ol type="1">
+<li>For each tube (500 ul) of digested chromatin (Tube A and Tube B), add:</li>
+</ol>
+<ul>
+<li>50 μL of 10× NEBuffer 2.1.</li>
+<li>200 μL of the appropriate half-linker (600 ng/μL).</li>
+<li>10 μL of 100 mM ATP.</li>
+<li>10 μL of HindIII (100 U/μL).</li>
+<li>5 μL of T7 DNA ligase (3,000 U/μL).</li>
+<li>225 μL of ddH₂O.</li>
+</ul>
+<ol start="2" type="1">
+<li>Mix thoroughly and incubate <strong>1 h at 25 °C</strong> with rotation at <strong>15 rpm</strong>.</li>
+</ol>
+<hr>
+</section>
+<section id="purification-of-linker-ligated-chromatin-dnaprotein-complex" class="level2">
+<h2 class="anchored" data-anchor-id="purification-of-linker-ligated-chromatin-dnaprotein-complex"><strong>3. Purification of Linker-Ligated Chromatin DNA–Protein Complex</strong></h2>
+<ol type="1">
+<li>Centrifuge at <strong>17,000 rpm for 1 h at 4 °C</strong>.<br>
+</li>
+<li>Discard the supernatant.<br>
+</li>
+<li>Resuspend pellet in <strong>1 mL PBS</strong>, centrifuge again (<strong>17,000 rpm for 1 h at 4 °C</strong>).<br>
+</li>
+<li>Discard the supernatant.</li>
+</ol>
+<hr>
+</section>
+<section id="in-gel-ligation" class="level2">
+<h2 class="anchored" data-anchor-id="in-gel-ligation"><strong>4. In-Gel Ligation</strong></h2>
+<ol type="1">
+<li>Dissolve pellets from Tubes A and B in <strong>50 μL of 1% SDS</strong>, then combine into one tube.<br>
+</li>
+<li>Add <strong>10 mL of prewarmed (37 °C) 1× T4 DNA ligation buffer</strong> containing:
+<ul>
+<li>0.4% low-melting-point agarose<br>
+</li>
+<li>1% Triton X-100<br>
+</li>
+<li>400 U T4 DNA ligase<br>
+</li>
+</ul></li>
+<li>Mix well and quickly solidify the gel in <strong>ice water</strong>.<br>
+</li>
+<li>Perform <strong>in-gel ligation at 20 °C for 6 h</strong>.</li>
+</ol>
+<hr>
+</section>
+<section id="reversal-of-cross-linking-and-dna-purification" class="level2">
+<h2 class="anchored" data-anchor-id="reversal-of-cross-linking-and-dna-purification"><strong>5. Reversal of Cross-Linking and DNA Purification</strong></h2>
+<ol type="1">
+<li>Melt agarose gel and digest with <strong>20 μL β-agarase at 65 °C for 1 h</strong>.<br>
+</li>
+<li>Transfer digested product to <strong>Amicon Ultra-0.5 (30 kDa)</strong> filters, centrifuge at <strong>5,000 rpm</strong>, and wash twice with ddH₂O.<br>
+</li>
+<li>Concentrate to <strong>800 μL</strong>.<br>
+</li>
+<li>Add:
+<ul>
+<li>100 μL 10% SDS<br>
+</li>
+<li>100 μL Proteinase K (10 mg/mL)<br>
+</li>
+</ul></li>
+<li>Incubate <strong>3 h at 60 °C</strong> to release DNA.<br>
+</li>
+<li>Extract twice with <strong>phenol:chloroform:isoamyl alcohol (25:24:1)</strong>.<br>
+</li>
+<li>Centrifuge <strong>15 min at 14,000 rpm</strong>, transferring supernatant each time.<br>
+</li>
+<li>Precipitate DNA using:
+<ul>
+<li>10 μL Dr.&nbsp;GenTLE Precipitation Carrier<br>
+</li>
+<li>100 μL 3 M sodium acetate (pH 5.2)<br>
+</li>
+<li>Equal volume isopropanol<br>
+</li>
+</ul></li>
+<li>Wash with <strong>80% ethanol</strong> and dissolve in <strong>160 μL ddH₂O</strong>.<br>
+</li>
+<li>Measure DNA concentration with a <strong>NanoDrop-1000</strong>.</li>
+</ol>
+<hr>
+</section>
+<section id="mmei-digestion-and-purification-of-80-bp-dlo-hi-c-dna-fragments" class="level2">
+<h2 class="anchored" data-anchor-id="mmei-digestion-and-purification-of-80-bp-dlo-hi-c-dna-fragments"><strong>6. MmeI Digestion and Purification of 80-bp DLO Hi-C DNA Fragments</strong></h2>
+<ol type="1">
+<li>To <strong>160 μL DNA</strong>, add:
+<ul>
+<li>20 μL 10× CutSmart buffer<br>
+</li>
+<li>10 μL SAM (NEB)<br>
+</li>
+<li>10 μL MmeI (2 U/μL)<br>
+</li>
+</ul></li>
+<li>Incubate <strong>1 h at 37 °C</strong>.<br>
+</li>
+<li>Run the digested sample on <strong>native PAGE</strong>, excise <strong>80-bp fragments</strong>.<br>
+</li>
+<li>Transfer gel slices to a <strong>0.6-mL tube (pierced bottom)</strong> nested inside a <strong>1.5-mL tube</strong>.<br>
+</li>
+<li>Centrifuge <strong>14,000 rpm for 10 min</strong> to shred gel.<br>
+</li>
+<li>Add <strong>400 μL TE buffer</strong> and incubate:
+<ul>
+<li><strong>20 min at –80 °C</strong><br>
+</li>
+<li><strong>2 h at 37 °C</strong> with rotation (15 rpm)<br>
+</li>
+</ul></li>
+<li>Transfer mixture to <strong>Spin-X tube filter</strong> and centrifuge.<br>
+</li>
+<li>To eluate, add:
+<ul>
+<li>4 μL Dr.&nbsp;GenTLE Carrier<br>
+</li>
+<li>40 μL 3 M sodium acetate (pH 5.2)<br>
+</li>
+<li>Equal volume isopropanol<br>
+</li>
+</ul></li>
+<li>Precipitate DNA, wash with <strong>80% ethanol</strong>, and dissolve in <strong>40 μL ddH₂O</strong>.</li>
+</ol>
+<hr>
+</section>
+<section id="illumina-sequencing-library-construction" class="level2">
+<h2 class="anchored" data-anchor-id="illumina-sequencing-library-construction"><strong>7. Illumina sequencing library construction</strong></h2>
+<section id="adapter-ligation" class="level3">
+<h3 class="anchored" data-anchor-id="adapter-ligation"><strong>Adapter Ligation</strong></h3>
+<p>Reagents and volumes (per reaction): | <strong>Reagent</strong> | <strong>Concentration</strong> | <strong>Volume (µL)</strong> | |—————————-|———————-|—————–| | DLO Hi-C DNA fragments | — | 40 | | PE-adapter 1 | 500 ng/µL | 1.5 | | PE-adapter 2 | 500 ng/µL | 1.5 | | 10× T4 DNA Ligase Buffer | 10× | 5 | | T4 DNA Ligase (Thermo) | 2 U/µL | 2 | | <strong>Total Volume</strong> | — | <strong>50</strong> |</p>
+<ol type="1">
+<li>Combine the reagents listed above in a sterile microcentrifuge tube.</li>
+<li>Mix gently by pipetting or flicking the tube.</li>
+<li>Incubate the reaction at 16 °C for 30 min.</li>
+</ol>
+</section>
+<section id="adapter-cleanup" class="level3">
+<h3 class="anchored" data-anchor-id="adapter-cleanup"><strong>Adapter Cleanup</strong></h3>
+<ol type="1">
+<li>Add 90 µL (1.8x) AMPure XP beads to the ligation reaction.</li>
+<li>Mix thoroughly and incubate at room temperature for 5 min.</li>
+<li>Place the tube on a magnetic rack and discard the supernatant.</li>
+<li>Wash the beads twice with 80% ethanol.</li>
+<li>Air-dry the beads briefly (avoid over-drying).</li>
+<li>Elute DNA from the beads with 45 µL ddH₂O.</li>
+</ol>
+</section>
+<section id="dna-repair" class="level3">
+<h3 class="anchored" data-anchor-id="dna-repair"><strong>DNA Repair</strong></h3>
+<ol type="1">
+<li>Combine eluted DNA with PreCR Repair Mix for a total volume of 50 µL.</li>
+<li>Incubate at 37 °C for 20 min.</li>
+</ol>
+</section>
+<section id="pcr-amplification" class="level3">
+<h3 class="anchored" data-anchor-id="pcr-amplification"><strong>PCR Amplification</strong></h3>
+<ol type="1">
+<li>Set up PCR using 5–10 µL repaired DNA as the template and PCR Master Mix per manufacturer’s protocol.</li>
+<li>Amplify for fewer than 13 cycles.</li>
+<li>Verify library size and quality by agarose gel or Bioanalyzer.</li>
+</ol>
+<hr>
+<p>✅ <strong>Protocol Complete — DLO Hi-C Library Ready for Sequencing</strong></p>
+<hr>
+</section>
+</section>
+<section id="reagents-and-materials" class="level1">
+<h1>Reagents and Materials</h1>
+<section id="cross-linking" class="level3">
+<h3 class="anchored" data-anchor-id="cross-linking"><strong>Cross-Linking</strong></h3>
+<ul class="task-list">
+<li><label><input type="checkbox">PBS (ice-cold)<br>
+</label></li>
+<li><label><input type="checkbox">EGS (ethylene glycol bis(succinimidyl succinate); Thermo)<br>
+</label></li>
+<li><label><input type="checkbox">Formaldehyde (1%; Sigma)<br>
+</label></li>
+<li><label><input type="checkbox">Glycine</label></li>
+</ul>
+<hr>
+</section>
+<section id="lysis-and-digestion" class="level3">
+<h3 class="anchored" data-anchor-id="lysis-and-digestion"><strong>Lysis and Digestion</strong></h3>
+<ul class="task-list">
+<li><label><input type="checkbox" checked="">Tris-HCl (10 mM, pH 8.0)<br>
+</label></li>
+<li><label><input type="checkbox">NaCl (10 mM)<br>
+</label></li>
+<li><label><input type="checkbox">Igepal CA-630 (0.3%)<br>
+</label></li>
+<li><label><input type="checkbox">Complete protease inhibitor cocktail (Roche)<br>
+</label></li>
+<li><label><input type="checkbox">SDS (1%)<br>
+</label></li>
+<li><label><input type="checkbox">Triton X-100 (20%)<br>
+</label></li>
+<li><label><input type="checkbox">HindIII (NEB, 100 U/μL)<br>
+</label></li>
+<li><label><input type="checkbox">NEBuffer 2.1 (NEB)</label></li>
+</ul>
+<hr>
+</section>
+<section id="linker-ligation" class="level3">
+<h3 class="anchored" data-anchor-id="linker-ligation"><strong>Linker Ligation</strong></h3>
+<ul class="task-list">
+<li><label><input type="checkbox">Annealed Half-linker A and B oligos (600 ng/μL) <strong>(see notes for annealing protocol)</strong></label></li>
+<li><label><input type="checkbox">ATP (100 mM)<br>
+</label></li>
+<li><label><input type="checkbox">T7 DNA ligase (NEB, 3,000 U/μL)<br>
+</label></li>
+<li><label><input type="checkbox">ddH₂O</label></li>
+</ul>
+</section>
+<section id="half-linker-set-1-hindiii" class="level3">
+<h3 class="anchored" data-anchor-id="half-linker-set-1-hindiii"><strong>Half-Linker Set 1 (HindIII)</strong></h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 24%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 24%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Half-Linker</strong></th>
+<th><strong>Top Strand</strong></th>
+<th><strong>Bottom Strand</strong></th>
+<th><strong>Annealed Product</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Half-Linker A</td>
+<td>5’-p-GATAGCTCAAGAACTCCGAC-3’</td>
+<td>5’-p-AGCTGTCGGAGTTCTTTGAGCTATC-3’</td>
+<td>dsDNA Half-Linker A</td>
+</tr>
+<tr class="even">
+<td>Half-Linker B</td>
+<td>5’-p-CTTAGCTCAAGAACTCCGAC-3’</td>
+<td>5’-p-AGCTGTCGGAGTTCTTTGAGCTAAG-3’</td>
+<td>dsDNA Half-Linker B</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="half-linker-set-2-hindiii" class="level3">
+<h3 class="anchored" data-anchor-id="half-linker-set-2-hindiii"><strong>Half-Linker Set 2 (HindIII)</strong></h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 24%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 24%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Half-Linker</strong></th>
+<th><strong>Top Strand</strong></th>
+<th><strong>Bottom Strand</strong></th>
+<th><strong>Annealed Product</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Half-Linker A</td>
+<td>5’-p-GATCGCTCAAGAACTCCGAC-3’</td>
+<td>5’-p-AGCTGTCGGAGTTCTTTGAGCGATC-3’</td>
+<td>dsDNA Half-Linker A</td>
+</tr>
+<tr class="even">
+<td>Half-Linker B</td>
+<td>5’-p-CTTACCTCAAGAACTCCGAC-3’</td>
+<td>5’-p-AGCTGTCGGAGTTCTTTGAGGTAAG-3’</td>
+<td>dsDNA Half-Linker B</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+<section id="in-gel-ligation-1" class="level3">
+<h3 class="anchored" data-anchor-id="in-gel-ligation-1"><strong>In-Gel Ligation</strong></h3>
+<ul class="task-list">
+<li><label><input type="checkbox">T4 DNA ligation buffer (1×; Thermo)<br>
+</label></li>
+<li><label><input type="checkbox">Low-melting-point agarose (0.4%; Takara)<br>
+</label></li>
+<li><label><input type="checkbox">T4 DNA ligase (400 U; Thermo)</label></li>
+</ul>
+<hr>
+</section>
+<section id="cross-link-reversal-and-dna-purification" class="level3">
+<h3 class="anchored" data-anchor-id="cross-link-reversal-and-dna-purification"><strong>Cross-Link Reversal and DNA Purification</strong></h3>
+<ul class="task-list">
+<li><label><input type="checkbox">β-Agarase (Takara)<br>
+</label></li>
+<li><label><input type="checkbox">Amicon Ultra-0.5 filters (30 kDa; Millipore)<br>
+</label></li>
+<li><label><input type="checkbox">Proteinase K (10 mg/mL; Sigma)<br>
+</label></li>
+<li><label><input type="checkbox">SDS (10%)<br>
+</label></li>
+<li><label><input type="checkbox">Phenol:chloroform:isoamyl alcohol (25:24:1)<br>
+</label></li>
+<li><label><input type="checkbox">Sodium acetate (3 M, pH 5.2)<br>
+</label></li>
+<li><label><input type="checkbox">Isopropanol<br>
+</label></li>
+<li><label><input type="checkbox">Ethanol (80%)<br>
+</label></li>
+<li><label><input type="checkbox">ddH₂O<br>
+</label></li>
+<li><label><input type="checkbox">NanoDrop-1000 spectrophotometer (Thermo)</label></li>
+</ul>
+<hr>
+</section>
+<section id="mmei-digestion-and-dna-recovery" class="level3">
+<h3 class="anchored" data-anchor-id="mmei-digestion-and-dna-recovery"><strong>MmeI Digestion and DNA Recovery</strong></h3>
+<ul class="task-list">
+<li><label><input type="checkbox">CutSmart buffer (10×; NEB)<br>
+</label></li>
+<li><label><input type="checkbox">S-Adenosylmethionine (SAM; NEB)<br>
+</label></li>
+<li><label><input type="checkbox">MmeI (2 U/μL; NEB)<br>
+</label></li>
+<li><label><input type="checkbox">TE buffer<br>
+</label></li>
+<li><label><input type="checkbox">Spin-X tube filters (Costar 8160)</label></li>
+</ul>
+<hr>
+</section>
+<section id="illumina-library-construction" class="level3">
+<h3 class="anchored" data-anchor-id="illumina-library-construction"><strong>Illumina Library Construction</strong></h3>
+<section id="adapter-ligation-1" class="level4">
+<h4 class="anchored" data-anchor-id="adapter-ligation-1"><strong>Adapter ligation</strong></h4>
+<ul class="task-list">
+<li><label><input type="checkbox">10× T4 DNA Ligase Buffer</label></li>
+<li><label><input type="checkbox">T4 DNA Ligase (Thermo; 2 U/µL)</label></li>
+<li><label><input type="checkbox">PE-adapter 1 (500 ng/µL)</label></li>
+<li><label><input type="checkbox">PE-adapter 2 (500 ng/µL)</label></li>
+</ul>
+<p>PE-adapter 1 <code>5’-OH–ACACTCTTTCCCTACACGACGCTCTTCCGATCTNN–OH-3’</code> <code>3’-OH–TGTGAGAAAGGGATGTGCGAGAAGGCTAGA–OH-5’</code></p>
+<p>PE-adapter 2 <code>5’-OH–GATCGGAAGAGCACACGTCTGAACTCCAGTCAC–OH-3’</code> <code>3’-OH–NNCTAGCCTTCTCGTGTGCTCTTCCGATCAGTG–OH-5’</code></p>
+</section>
+</section>
+<section id="adapter-cleanup-1" class="level3">
+<h3 class="anchored" data-anchor-id="adapter-cleanup-1"><strong>Adapter Cleanup</strong></h3>
+<ul class="task-list">
+<li><label><input type="checkbox">AMPure XP beads</label></li>
+<li><label><input type="checkbox">80% ethanol</label></li>
+<li><label><input type="checkbox">Nuclease-free water (ddH₂O)</label></li>
+</ul>
+</section>
+<section id="dna-repair-1" class="level3">
+<h3 class="anchored" data-anchor-id="dna-repair-1"><strong>DNA Repair</strong></h3>
+<ul class="task-list">
+<li><label><input type="checkbox">PreCR Repair Mix (NEB): per manufacturer’s instructions</label></li>
+</ul>
+</section>
+<section id="pcr-amplification-1" class="level3">
+<h3 class="anchored" data-anchor-id="pcr-amplification-1"><strong>PCR Amplification</strong></h3>
+<ul class="task-list">
+<li><label><input type="checkbox">Repaired DNA: 5–10 µL (template)</label></li>
+<li><label><input type="checkbox">PCR master mix: per manufacturer’s protocol</label></li>
+<li><label><input type="checkbox">PCR Primers</label></li>
+</ul>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 75%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>PCR Primer 1</th>
+<th><code>5’-AATGATACGGCGACCACCGAGATCTACACTCTTTCCCTACACGACGCTCTTCCGATCT-3’</code></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>PCR Primer 2</td>
+<td><code>5’-CAAGCAGAAGACGGCATACGAGAT(index)GTGACTGGAGTTCAGACGTGTGCTCTTCCGATC-3’</code></td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+<section id="notes" class="level2">
+<h2 class="anchored" data-anchor-id="notes">Notes</h2>
+<p><strong>Generation of MmeI Half-Linkers</strong> To phosphorylate and anneal paired oligonucleotides to generate MmeI half-linkers. This have to be done separately for each half linker.</p>
+<p><strong>Reagents:</strong><br>
+- Paired oligonucleotides (top and bottom) - T4 Polynucleotide Kinase (T4 PNK; NEB)<br>
+- 10× T4 PNK Buffer (NEB)<br>
+- ATP (as required by buffer formulation)</p>
+<p><strong>Procedure:</strong><br>
+1. Mix paired oligonucleotides with <strong>T4 PNK</strong> and <strong>10× PNK buffer</strong> according to manufacturer’s instructions.<br>
+2. Incubate the reaction at <strong>37 °C for 30 min</strong> to phosphorylate the oligos.<br>
+3. Place the reaction in a <strong>thermocycler</strong> and anneal using the following program:<br>
+- <strong>95 °C for 5 min</strong><br>
+- Gradual cooling to <strong>25 °C</strong> at a rate of <strong>5 °C per minute</strong><br>
+4. Store annealed half-linkers at <strong>–20 °C</strong> until use.</p>
+<p><em>post image credit: © majcot - stock.adobe.com</em></p>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <category>Method</category>
+  <category>NGS</category>
+  <guid>https://phylofignatico.com/posts/2025-11-04-DLo-HiC/2025-11-04.html</guid>
+  <pubDate>Tue, 04 Nov 2025 05:00:00 GMT</pubDate>
+  <media:content url="https://phylofignatico.com/images/Genome_AdobeStock_277779914.png" medium="image" type="image/png" height="93" width="144"/>
+</item>
 <item>
   <title>DNA Extraction and B.E.S.T. library construction from Herbarium Ficus leaves</title>
   <dc:creator>Kevin Quinteros</dc:creator>
