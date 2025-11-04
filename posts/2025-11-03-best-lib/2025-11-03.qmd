@@ -147,3 +147,5 @@ We ran an agarose gel on an aliquot of our library to assess the distribution of
 One way to improve the **fragment size distribution** would be to perform **size selection before library indexing and amplification**. However, this could significantly reduce the total amount of DNA available for library amplification, which is one of the advantages of the **BEST library protocol** compared to standard Illumina library prep. Another option is to perform **size selection after library amplification**, but this would not eliminate the **PCR bias**, particularly the overrepresentation of shorter fragments.
 
 Another challenge we are currently seeing is that some libraries have very low concentrations, around **3 ng/µL**. If this is due to an excess of smaller fragments, it remains a concern. Increasing PCR cycles may boost yield, but this approach can also increase duplication rates, thereby reducing library complexity.
+
+*post image credit: © valvectors - stock.adobe.com*
