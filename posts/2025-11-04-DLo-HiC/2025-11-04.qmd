@@ -15,7 +15,7 @@ format:
 
 ## Overview
 
-This protocol describes a chromosome conformation capture (3C) sequencing method based on [Lin et al. (2018)](https://rdcu.be/eN6DV). In this approach, the authors developed a simplified digestion-ligation-only Hi-C (DLO-HiC) protocol to explore the 3D organization of the genome. Unlike conventional Hi-C methods, DLO-HiC does not require biotin labeling or pull-down steps and involves only two rounds of digestion and ligation.
+This protocol describes a chromosome conformation capture (3C) sequencing method based on [Lin et al. (2018)](https://rdcu.be/eN6DV). In this approach, the authors developed a simplified digestion-ligation-only Hi-C (DLO-HiC) protocol to explore the 3D organization of the genome. Unlike conventional Hi-C methods, DLO-HiC does not require biotin labeling or pull-down steps and involves only two rounds of digestion and ligation. I have made some minor adjustments to ensure the protocol is suitable for both leaf tissue and whole-body insects.
 
 ### Mechanism overview
 
@@ -34,24 +34,41 @@ Prepare prior:
 
 double cross-linking buffer: **1.5 mM EGS** and **1% formaldehyde**
 
-1.  Homogenize tissue with liquid nitrogen.\
-2.  Pellet suspended cells by centrifugation at **1,000 rpm for 5 min** and wash once with **ice-cold PBS**. (not sure if necessary if we homogenize with liquid nitrogen)
-3.  to pellet add <u>(How much? 1 mL?)</u> **double cross-linking** buffer containing:
-    -   1.5 mM EGS
-    -   1% formaldehyde
-4.  Quench cross-linking with <u>(How much?) 125 uL?</u> **glycine**
-    -   standard concentration is 0.125 M
+1.  1\. Homogenize tissue with liquid nitrogen.
+
+     - Insect: 50 - 200 mg
+
+     - Plant: 200 mg - 1 g leaf or seed tissue, avoid stem or woody plant tissue. Use younger plant tissue, as it tends to yield higher DNA yields and higher-quality libraries.
+
+2.  Pellet suspended cells by centrifugation at \*\*1,000 rpm for 5 min\*\* and wash once with \*\*ice-cold PBS\*\*. (not sure if necessary if we homogenize with liquid nitrogen
+
+3.  to pellet add \~1 mL \*\*double cross-linking\*\* buffer containing:
+
+     - 1.5 mM EGS
+
+     - 1% formaldehyde
+
+4.  Quench cross-linking with \~125 μL \*\*glycine\*\*
+
+     - concentration should \~0.125 M
+
 5.  Lyse cells in **lysis buffer** containing
+
     -   10 mM Tris-HCl pH 8.0
     -   10 mM NaCl
     -   0.3% Igepal CA-630,
     -   Complete protease inhibitors
+
 6.  Resuspend nuclei in **100 μL of 1% SDS**, incubate at **60 °C for 5 min**, then place on ice.\
+
 7.  Split nuclei into **two 1.5-mL tubes** (Tube A and Tube B).\
+
 8.  To each tube, add:
+
     -   50 μL 20% Triton X-100\
     -   15 μL HindIII (100 U/μL)\
     -   385 μL 1.3× NEBuffer 2.1\
+
 9.  Incubate for **6 h at 37 °C** with rotation at **15 rpm**.
 
 ------------------------------------------------------------------------

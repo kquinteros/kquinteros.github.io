@@ -1,5 +1,5 @@
 /.quarto/
-/_site/
+/_site/*
 .sass-cache
 .jekyll-metadatai
 .ipynb_checkpoints/
