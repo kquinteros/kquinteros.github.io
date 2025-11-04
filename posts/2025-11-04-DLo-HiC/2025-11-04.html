@@ -188,7 +188,7 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="overview" class="level2">
 <h2 class="anchored" data-anchor-id="overview">Overview</h2>
-<p>This protocol describes a chromosome conformation capture (3C) sequencing method based on <a href="https://rdcu.be/eN6DV">Lin et al.&nbsp;(2018)</a>. In this approach, the authors developed a simplified digestion-ligation-only Hi-C (DLO-HiC) protocol to explore the 3D organization of the genome. Unlike conventional Hi-C methods, DLO-HiC does not require biotin labeling or pull-down steps and involves only two rounds of digestion and ligation.</p>
+<p>This protocol describes a chromosome conformation capture (3C) sequencing method based on <a href="https://rdcu.be/eN6DV">Lin et al.&nbsp;(2018)</a>. In this approach, the authors developed a simplified digestion-ligation-only Hi-C (DLO-HiC) protocol to explore the 3D organization of the genome. Unlike conventional Hi-C methods, DLO-HiC does not require biotin labeling or pull-down steps and involves only two rounds of digestion and ligation. I have made some minor adjustments to ensure the protocol is suitable for both leaf tissue and whole-body insects.</p>
 <section id="mechanism-overview" class="level3">
 <h3 class="anchored" data-anchor-id="mechanism-overview">Mechanism overview</h3>
 <ol type="1">
@@ -209,30 +209,33 @@ ul.task-list li input[type="checkbox"] {
 <p>Prepare prior:</p>
 <p>double cross-linking buffer: <strong>1.5 mM EGS</strong> and <strong>1% formaldehyde</strong></p>
 <ol type="1">
-<li>Homogenize tissue with liquid nitrogen.<br>
-</li>
-<li>Pellet suspended cells by centrifugation at <strong>1,000 rpm for 5 min</strong> and wash once with <strong>ice-cold PBS</strong>. (not sure if necessary if we homogenize with liquid nitrogen)</li>
-<li>to pellet add <u>(How much? 1 mL?)</u> <strong>double cross-linking</strong> buffer containing:
+<li><p>1. Homogenize tissue with liquid nitrogen.</p>
 <ul>
-<li>1.5 mM EGS</li>
-<li>1% formaldehyde</li>
+<li><p>Insect: 50 - 200 mg</p></li>
+<li><p>Plant: 200 mg - 1 g leaf or seed tissue, avoid stem or woody plant tissue. Use younger plant tissue, as it tends to yield higher DNA yields and higher-quality libraries.</p></li>
 </ul></li>
-<li>Quench cross-linking with <u>(How much?) 125 uL?</u> <strong>glycine</strong>
+<li><p>Pellet suspended cells by centrifugation at **1,000 rpm for 5 min** and wash once with **ice-cold PBS**. (not sure if necessary if we homogenize with liquid nitrogen</p></li>
+<li><p>to pellet add ~1 mL **double cross-linking** buffer containing:</p>
 <ul>
-<li>standard concentration is 0.125 M</li>
+<li><p>1.5 mM EGS</p></li>
+<li><p>1% formaldehyde</p></li>
 </ul></li>
-<li>Lyse cells in <strong>lysis buffer</strong> containing
+<li><p>Quench cross-linking with ~125 μL **glycine**</p>
+<ul>
+<li>concentration should ~0.125 M</li>
+</ul></li>
+<li><p>Lyse cells in <strong>lysis buffer</strong> containing</p>
 <ul>
 <li>10 mM Tris-HCl pH 8.0</li>
 <li>10 mM NaCl</li>
 <li>0.3% Igepal CA-630,</li>
 <li>Complete protease inhibitors</li>
 </ul></li>
-<li>Resuspend nuclei in <strong>100 μL of 1% SDS</strong>, incubate at <strong>60 °C for 5 min</strong>, then place on ice.<br>
-</li>
-<li>Split nuclei into <strong>two 1.5-mL tubes</strong> (Tube A and Tube B).<br>
-</li>
-<li>To each tube, add:
+<li><p>Resuspend nuclei in <strong>100 μL of 1% SDS</strong>, incubate at <strong>60 °C for 5 min</strong>, then place on ice.<br>
+</p></li>
+<li><p>Split nuclei into <strong>two 1.5-mL tubes</strong> (Tube A and Tube B).<br>
+</p></li>
+<li><p>To each tube, add:</p>
 <ul>
 <li>50 μL 20% Triton X-100<br>
 </li>
@@ -241,7 +244,7 @@ ul.task-list li input[type="checkbox"] {
 <li>385 μL 1.3× NEBuffer 2.1<br>
 </li>
 </ul></li>
-<li>Incubate for <strong>6 h at 37 °C</strong> with rotation at <strong>15 rpm</strong>.</li>
+<li><p>Incubate for <strong>6 h at 37 °C</strong> with rotation at <strong>15 rpm</strong>.</p></li>
 </ol>
 <hr>
 </section>
