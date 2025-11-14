@@ -11,14 +11,14 @@
     "href": "index.html",
     "title": "Kevin Quinteros",
     "section": "",
-    "text": "Welcome!\nI’m Kevin Quinteros, a postdoctoral researcher studying the relationships between plants and insects. My work combines field ecology and genomic approaches to uncover how coevolution shapes the diversity of life we see today. By investigating the ecological and evolutionary processes that generate and maintain these interactions, I aim to shed light on the mechanisms driving adaptation, specialization, and speciation in plant-insect systems.\nSkills & Expertise\n\nMolecular Ecology and Genomics\n\n\n\nTropical Field Ecology\nPhylogenetics and Population Genomics\nData Visualization and Statistical Analysis in R\nScience communication and Mentoring"
+    "text": "Welcome!\nI’m Kevin Quinteros, a postdoctoral researcher studying the relationships between plants and insects. My work combines field ecology and genomic approaches to uncover how coevolution shapes the diversity of life we see today. By investigating the ecological and evolutionary processes that generate and maintain these interactions, I aim to shed light on the mechanisms driving adaptation, specialization, and speciation in plant-insect systems.\nSkills & Expertise\n\nMolecular Ecology and Genomics\nPhylogenetics and Population Genomics\nData Visualization and Statistical Analysis in R\nScience communication and Mentoring"
   },
   {
     "objectID": "index.html#bio",
     "href": "index.html#bio",
     "title": "Kevin Quinteros",
     "section": "",
-    "text": "Welcome!\nI’m Kevin Quinteros, a postdoctoral researcher studying the relationships between plants and insects. My work combines field ecology and genomic approaches to uncover how coevolution shapes the diversity of life we see today. By investigating the ecological and evolutionary processes that generate and maintain these interactions, I aim to shed light on the mechanisms driving adaptation, specialization, and speciation in plant-insect systems.\nSkills & Expertise\n\nMolecular Ecology and Genomics\n\n\n\nTropical Field Ecology\nPhylogenetics and Population Genomics\nData Visualization and Statistical Analysis in R\nScience communication and Mentoring"
+    "text": "Welcome!\nI’m Kevin Quinteros, a postdoctoral researcher studying the relationships between plants and insects. My work combines field ecology and genomic approaches to uncover how coevolution shapes the diversity of life we see today. By investigating the ecological and evolutionary processes that generate and maintain these interactions, I aim to shed light on the mechanisms driving adaptation, specialization, and speciation in plant-insect systems.\nSkills & Expertise\n\nMolecular Ecology and Genomics\nPhylogenetics and Population Genomics\nData Visualization and Statistical Analysis in R\nScience communication and Mentoring"
   },
   {
     "objectID": "posts/2025-10-01-new-web/2025-10-01.html",
@@ -200,14 +200,14 @@
     "href": "posts/2025-11-04-DLo-HiC/2025-11-04.html#reversal-of-cross-linking-and-dna-purification",
     "title": "Chromosome Conformation Capture (3C): DLO Hi-C",
     "section": "5. Reversal of Cross-Linking and DNA Purification",
-    "text": "5. Reversal of Cross-Linking and DNA Purification\n\nMelt agarose gel and digest with 20 μL β-agarase at 65 °C for 1 h.\n\nTransfer digested product to Amicon Ultra-0.5 (30 kDa) filters, centrifuge at 5,000 rpm, and wash twice with ddH₂O.\n\nConcentrate to 800 μL.\n\nAdd:\n\n100 μL 10% SDS\n\n100 μL Proteinase K (10 mg/mL)\n\n\nIncubate 3 h at 60 °C to release DNA.\n\nExtract twice with phenol:chloroform:isoamyl alcohol (25:24:1).\n\nCentrifuge 15 min at 14,000 rpm, transferring supernatant each time.\n\nPrecipitate DNA using:\n\n10 μL Dr. GenTLE Precipitation Carrier\n\n100 μL 3 M sodium acetate (pH 5.2)\n\nEqual volume isopropanol\n\n\nWash with 80% ethanol and dissolve in 160 μL ddH₂O.\n\nMeasure DNA concentration with a NanoDrop-1000."
+    "text": "5. Reversal of Cross-Linking and DNA Purification\n\nMelt agarose gel and digest with 20 μL β-agarase at 65 °C for 1 h.\n\nTransfer digested product to Amicon Ultra-15 (30 kDa) filters, centrifuge at 5,000 rpm, and wash twice with ddH₂O.\n\nConcentrate to 800 μL.\n\nAdd:\n\n100 μL 10% SDS\n\n100 μL Proteinase K (10 mg/mL)\n\n\nIncubate 3 h at 60 °C to release DNA.\n\nExtract twice with phenol:chloroform:isoamyl alcohol (25:24:1).\n\nCentrifuge 15 min at 14,000 rpm, transferring supernatant each time.\n\nPrecipitate DNA using:\n\n10 μL Dr. GenTLE Precipitation Carrier\n\n100 μL 3 M sodium acetate (pH 5.2)\n\nEqual volume isopropanol\n\n\nWash with 80% ethanol and dissolve in 160 μL ddH₂O.\n\nMeasure DNA concentration with a NanoDrop-1000."
   },
   {
     "objectID": "posts/2025-11-04-DLo-HiC/2025-11-04.html#mmei-digestion-and-purification-of-80-bp-dlo-hi-c-dna-fragments",
     "href": "posts/2025-11-04-DLo-HiC/2025-11-04.html#mmei-digestion-and-purification-of-80-bp-dlo-hi-c-dna-fragments",
     "title": "Chromosome Conformation Capture (3C): DLO Hi-C",
     "section": "6. MmeI Digestion and Purification of 80-bp DLO Hi-C DNA Fragments",
-    "text": "6. MmeI Digestion and Purification of 80-bp DLO Hi-C DNA Fragments\n\nTo 160 μL DNA, add:\n\n20 μL 10× CutSmart buffer\n\n10 μL SAM (NEB)\n\n10 μL MmeI (2 U/μL)\n\n\nIncubate 1 h at 37 °C.\n\nRun the digested sample on native PAGE, excise 80-bp fragments.\n\nTransfer gel slices to a 0.6-mL tube (pierced bottom) nested inside a 1.5-mL tube.\n\nCentrifuge 14,000 rpm for 10 min to shred gel.\n\nAdd 400 μL TE buffer and incubate:\n\n20 min at –80 °C\n\n2 h at 37 °C with rotation (15 rpm)\n\n\nTransfer mixture to Spin-X tube filter and centrifuge.\n\nTo eluate, add:\n\n4 μL Dr. GenTLE Carrier\n\n40 μL 3 M sodium acetate (pH 5.2)\n\nEqual volume isopropanol\n\n\nPrecipitate DNA, wash with 80% ethanol, and dissolve in 40 μL ddH₂O."
+    "text": "6. MmeI Digestion and Purification of 80-bp DLO Hi-C DNA Fragments\n\nTo 160 μL DNA, add:\n\n20 μL 10× CutSmart buffer\n\n10 μL SAM (NEB)\n\n10 μL MmeI (2 U/μL)\n\n\nIncubate 1 h at 37 °C.\n\nRun the digested sample on native PAGE, excise 80-bp fragments.\n\nTransfer gel slices to a 0.6-mL tube (pierced bottom) nested inside a 1.5-mL tube.\n\nCentrifuge 14,000 rpm for 10 min to shred gel.\n\nAdd 400 μL TE buffer and incubate:\n\n20 min at –80 °C\n\n2 h at 37 °C with rotation (15 rpm)\n\n\nTransfer mixture to Spin-X tube filter and centrifuge.\n\nTo eluate, add:\n\n4 μL Dr. GenTLE Carrier or another DNA carrier\n\n40 μL 3 M sodium acetate (pH 5.2)\n\nEqual volume isopropanol\n\n\nPrecipitate DNA, wash with 80% ethanol, and dissolve in 40 μL ddH₂O."
   },
   {
     "objectID": "posts/2025-11-04-DLo-HiC/2025-11-04.html#illumina-sequencing-library-construction",
