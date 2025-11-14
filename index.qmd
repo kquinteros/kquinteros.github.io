@@ -35,13 +35,8 @@ I’m **Kevin Quinteros**, a postdoctoral researcher studying the relationships 
 
 **Skills & Expertise**
 
--   Genomics and bioinformatics
-
--   Molecular biology and field ecology
-
--   Phylogenetics and population genomics
-
--   Data visualization and statistical analysis in R
-
--   Science communication and mentoring
+-   Molecular Ecology and Genomics
+-   Phylogenetics and Population Genomics
+-   Data Visualization and Statistical Analysis in R
+-   Science communication and Mentoring
 :::

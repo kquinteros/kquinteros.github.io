@@ -36,21 +36,21 @@ double cross-linking buffer: **1.5 mM EGS** and **1% formaldehyde**
 
 1.  1\. Homogenize tissue with liquid nitrogen.
 
-     - Insect: 50 - 200 mg
+    -   Insect: 50 - 200 mg
 
-     - Plant: 200 mg - 1 g leaf or seed tissue, avoid stem or woody plant tissue. Use younger plant tissue, as it tends to yield higher DNA yields and higher-quality libraries.
+    -   Plant: 200 mg - 1 g leaf or seed tissue, avoid stem or woody plant tissue. Use younger plant tissue, as it tends to yield higher DNA yields and higher-quality libraries.
 
 2.  Pellet suspended cells by centrifugation at \*\*1,000 rpm for 5 min\*\* and wash once with \*\*ice-cold PBS\*\*. (not sure if necessary if we homogenize with liquid nitrogen
 
 3.  to pellet add \~1 mL \*\*double cross-linking\*\* buffer containing:
 
-     - 1.5 mM EGS
+    -   1.5 mM EGS
 
-     - 1% formaldehyde
+    -   1% formaldehyde
 
 4.  Quench cross-linking with \~125 μL \*\*glycine\*\*
 
-     - concentration should \~0.125 M
+    -   concentration should \~0.125 M
 
 5.  Lyse cells in **lysis buffer** containing
 
@@ -112,7 +112,7 @@ double cross-linking buffer: **1.5 mM EGS** and **1% formaldehyde**
 ## **5. Reversal of Cross-Linking and DNA Purification**
 
 1.  Melt agarose gel and digest with **20 μL β-agarase at 65 °C for 1 h**.\
-2.  Transfer digested product to **Amicon Ultra-0.5 (30 kDa)** filters, centrifuge at **5,000 rpm**, and wash twice with ddH₂O.\
+2.  Transfer digested product to **Amicon Ultra-15 (30 kDa)** filters, centrifuge at **5,000 rpm**, and wash twice with ddH₂O.\
 3.  Concentrate to **800 μL**.\
 4.  Add:
     -   100 μL 10% SDS\
@@ -144,7 +144,7 @@ double cross-linking buffer: **1.5 mM EGS** and **1% formaldehyde**
     -   **2 h at 37 °C** with rotation (15 rpm)\
 7.  Transfer mixture to **Spin-X tube filter** and centrifuge.\
 8.  To eluate, add:
-    -   4 μL Dr. GenTLE Carrier\
+    -   4 μL Dr. GenTLE Carrier or another DNA carrier\
     -   40 μL 3 M sodium acetate (pH 5.2)\
     -   Equal volume isopropanol\
 9.  Precipitate DNA, wash with **80% ethanol**, and dissolve in **40 μL ddH₂O**.
@@ -221,14 +221,14 @@ Reagents and volumes (per reaction): \| **Reagent** \| **Concentration** \| **Vo
 ### **Half-Linker Set 1 (HindIII)**
 
 | **Half-Linker** | **Top Strand** | **Bottom Strand** | **Annealed Product** |
-|------------------|-------------------|-------------------|------------------|
+|------------------|------------------|------------------|------------------|
 | Half-Linker A | 5'-p-GATAGCTCAAGAACTCCGAC-3' | 5'-p-AGCTGTCGGAGTTCTTTGAGCTATC-3' | dsDNA Half-Linker A |
 | Half-Linker B | 5'-p-CTTAGCTCAAGAACTCCGAC-3' | 5'-p-AGCTGTCGGAGTTCTTTGAGCTAAG-3' | dsDNA Half-Linker B |
 
 ### **Half-Linker Set 2 (HindIII)**
 
 | **Half-Linker** | **Top Strand** | **Bottom Strand** | **Annealed Product** |
-|------------------|-------------------|-------------------|------------------|
+|------------------|------------------|------------------|------------------|
 | Half-Linker A | 5'-p-GATCGCTCAAGAACTCCGAC-3' | 5'-p-AGCTGTCGGAGTTCTTTGAGCGATC-3' | dsDNA Half-Linker A |
 | Half-Linker B | 5'-p-CTTACCTCAAGAACTCCGAC-3' | 5'-p-AGCTGTCGGAGTTCTTTGAGGTAAG-3' | dsDNA Half-Linker B |
 
@@ -245,7 +245,7 @@ Reagents and volumes (per reaction): \| **Reagent** \| **Concentration** \| **Vo
 ### **Cross-Link Reversal and DNA Purification**
 
 -   [ ] β-Agarase (Takara)\
--   [ ] Amicon Ultra-0.5 filters (30 kDa; Millipore)\
+-   [ ] Amicon Ultra-15 filters (30 kDa; Millipore)\
 -   [ ] Proteinase K (10 mg/mL; Sigma)\
 -   [ ] SDS (10%)\
 -   [ ] Phenol:chloroform:isoamyl alcohol (25:24:1)\
@@ -297,7 +297,7 @@ PE-adapter 2 `5’-OH–GATCGGAAGAGCACACGTCTGAACTCCAGTCAC–OH-3’` `3’-OH–
 -   [ ] PCR Primers
 
 | PCR Primer 1 | `5’-AATGATACGGCGACCACCGAGATCTACACTCTTTCCCTACACGACGCTCTTCCGATCT-3’` |
-|------------------------------------------------------|------------------|
+|-----------------------------------------------------|-------------------|
 | PCR Primer 2 | `5’-CAAGCAGAAGACGGCATACGAGAT(index)GTGACTGGAGTTCAGACGTGTGCTCTTCCGATC-3’` |
 
 ------------------------------------------------------------------------
