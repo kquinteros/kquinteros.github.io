@@ -1,16 +1,10 @@
 ---
 title: "Chromosome Conformation Capture (3C): DLO Hi-C"
-author: "Kevin Quinteros"
-date: "2025-11-04"
+date: 2025-11-04
 description: "We are exploring the possibility of conducting chromosome conformation capture (3C) sequencing in the lab without using a commercial kit. I wrote up a step-by-step digestion-ligation-only Hi-C (DLO-HiC) protocol from the method described in Lin et al, 2018."
 image: ../../images/Genome_AdobeStock_277779914.png
-categories: [Method, NGS]   # Customize tags
-draft: false                                # Set true while editing
-format:
-  html:
-    toc: true
-    toc-depth: 2
-    code-fold: true
+categories: [Method, NGS]
+draft: false
 ---
 
 ## Overview
@@ -28,7 +22,7 @@ After MmeI digestion, the final sequenced molecule looks like:
 
 `[Adaptor]–[20 bp genomic fragment 1]–[Linker barcode]–[20 bp genomic fragment 2]–[Adaptor]`
 
-## **1. Cell Preparation and Restriction Enzyme Digestion**
+## 1. Cell Preparation and Restriction Enzyme Digestion
 
 Prepare prior:
 
@@ -73,7 +67,7 @@ double cross-linking buffer: **1.5 mM EGS** and **1% formaldehyde**
 
 ------------------------------------------------------------------------
 
-## **2. MmeI Half-Linker Ligation**
+## 2. MmeI Half-Linker Ligation
 
 1.  For each tube (500 ul) of digested chromatin (Tube A and Tube B), add:
 
@@ -88,7 +82,7 @@ double cross-linking buffer: **1.5 mM EGS** and **1% formaldehyde**
 
 ------------------------------------------------------------------------
 
-## **3. Purification of Linker-Ligated Chromatin DNA–Protein Complex**
+## 3. Purification of Linker-Ligated Chromatin DNA–Protein Complex
 
 1.  Centrifuge at **17,000 rpm for 1 h at 4 °C**.\
 2.  Discard the supernatant.\
@@ -97,7 +91,7 @@ double cross-linking buffer: **1.5 mM EGS** and **1% formaldehyde**
 
 ------------------------------------------------------------------------
 
-## **4. In-Gel Ligation**
+## 4. In-Gel Ligation
 
 1.  Dissolve pellets from Tubes A and B in **50 μL of 1% SDS**, then combine into one tube.\
 2.  Add **10 mL of prewarmed (37 °C) 1× T4 DNA ligation buffer** containing:
@@ -109,7 +103,7 @@ double cross-linking buffer: **1.5 mM EGS** and **1% formaldehyde**
 
 ------------------------------------------------------------------------
 
-## **5. Reversal of Cross-Linking and DNA Purification**
+## 5. Reversal of Cross-Linking and DNA Purification
 
 1.  Melt agarose gel and digest with **20 μL β-agarase at 65 °C for 1 h**.\
 2.  Transfer digested product to **Amicon Ultra-15 (30 kDa)** filters, centrifuge at **5,000 rpm**, and wash twice with ddH₂O.\
@@ -129,7 +123,7 @@ double cross-linking buffer: **1.5 mM EGS** and **1% formaldehyde**
 
 ------------------------------------------------------------------------
 
-## **6. MmeI Digestion and Purification of 80-bp DLO Hi-C DNA Fragments**
+## 6. MmeI Digestion and Purification of 80-bp DLO Hi-C DNA Fragments
 
 1.  To **160 μL DNA**, add:
     -   20 μL 10× CutSmart buffer\
@@ -151,9 +145,9 @@ double cross-linking buffer: **1.5 mM EGS** and **1% formaldehyde**
 
 ------------------------------------------------------------------------
 
-## **7. Illumina sequencing library construction**
+## 7. Illumina sequencing library construction
 
-### **Adapter Ligation**
+### Adapter Ligation
 
 Reagents and volumes (per reaction): \| **Reagent** \| **Concentration** \| **Volume (µL)** \| \|----------------------------\|----------------------\|-----------------\| \| DLO Hi-C DNA fragments \| — \| 40 \| \| PE-adapter 1 \| 500 ng/µL \| 1.5 \| \| PE-adapter 2 \| 500 ng/µL \| 1.5 \| \| 10× T4 DNA Ligase Buffer \| 10× \| 5 \| \| T4 DNA Ligase (Thermo) \| 2 U/µL \| 2 \| \| **Total Volume** \| — \| **50** \|
 
@@ -161,7 +155,7 @@ Reagents and volumes (per reaction): \| **Reagent** \| **Concentration** \| **Vo
 2.  Mix gently by pipetting or flicking the tube.
 3.  Incubate the reaction at 16 °C for 30 min.
 
-### **Adapter Cleanup**
+### Adapter Cleanup
 
 1.  Add 90 µL (1.8x) AMPure XP beads to the ligation reaction.
 2.  Mix thoroughly and incubate at room temperature for 5 min.
@@ -170,12 +164,12 @@ Reagents and volumes (per reaction): \| **Reagent** \| **Concentration** \| **Vo
 5.  Air-dry the beads briefly (avoid over-drying).
 6.  Elute DNA from the beads with 45 µL ddH₂O.
 
-### **DNA Repair**
+### DNA Repair
 
 1.  Combine eluted DNA with PreCR Repair Mix for a total volume of 50 µL.
 2.  Incubate at 37 °C for 20 min.
 
-### **PCR Amplification**
+### PCR Amplification
 
 1.  Set up PCR using 5–10 µL repaired DNA as the template and PCR Master Mix per manufacturer’s protocol.
 2.  Amplify for fewer than 13 cycles.
@@ -187,9 +181,9 @@ Reagents and volumes (per reaction): \| **Reagent** \| **Concentration** \| **Vo
 
 ------------------------------------------------------------------------
 
-# Reagents and Materials
+## Reagents and Materials
 
-### **Cross-Linking**
+### Cross-Linking
 
 -   [ ] PBS (ice-cold)\
 -   [ ] EGS (ethylene glycol bis(succinimidyl succinate); Thermo)\
@@ -198,7 +192,7 @@ Reagents and volumes (per reaction): \| **Reagent** \| **Concentration** \| **Vo
 
 ------------------------------------------------------------------------
 
-### **Lysis and Digestion**
+### Lysis and Digestion
 
 -   [x] Tris-HCl (10 mM, pH 8.0)\
 -   [ ] NaCl (10 mM)\
@@ -211,21 +205,21 @@ Reagents and volumes (per reaction): \| **Reagent** \| **Concentration** \| **Vo
 
 ------------------------------------------------------------------------
 
-### **Linker Ligation**
+### Linker Ligation
 
 -   [ ] Annealed Half-linker A and B oligos (600 ng/μL) **(see notes for annealing protocol)**
 -   [ ] ATP (100 mM)\
 -   [ ] T7 DNA ligase (NEB, 3,000 U/μL)\
 -   [ ] ddH₂O
 
-### **Half-Linker Set 1 (HindIII)**
+### Half-Linker Set 1 (HindIII)
 
 | **Half-Linker** | **Top Strand** | **Bottom Strand** | **Annealed Product** |
 |------------------|------------------|------------------|------------------|
 | Half-Linker A | 5'-p-GATAGCTCAAGAACTCCGAC-3' | 5'-p-AGCTGTCGGAGTTCTTTGAGCTATC-3' | dsDNA Half-Linker A |
 | Half-Linker B | 5'-p-CTTAGCTCAAGAACTCCGAC-3' | 5'-p-AGCTGTCGGAGTTCTTTGAGCTAAG-3' | dsDNA Half-Linker B |
 
-### **Half-Linker Set 2 (HindIII)**
+### Half-Linker Set 2 (HindIII)
 
 | **Half-Linker** | **Top Strand** | **Bottom Strand** | **Annealed Product** |
 |------------------|------------------|------------------|------------------|
@@ -234,7 +228,7 @@ Reagents and volumes (per reaction): \| **Reagent** \| **Concentration** \| **Vo
 
 ------------------------------------------------------------------------
 
-### **In-Gel Ligation**
+### In-Gel Ligation
 
 -   [ ] T4 DNA ligation buffer (1×; Thermo)\
 -   [ ] Low-melting-point agarose (0.4%; Takara)\
@@ -242,7 +236,7 @@ Reagents and volumes (per reaction): \| **Reagent** \| **Concentration** \| **Vo
 
 ------------------------------------------------------------------------
 
-### **Cross-Link Reversal and DNA Purification**
+### Cross-Link Reversal and DNA Purification
 
 -   [ ] β-Agarase (Takara)\
 -   [ ] Amicon Ultra-15 filters (30 kDa; Millipore)\
@@ -257,7 +251,7 @@ Reagents and volumes (per reaction): \| **Reagent** \| **Concentration** \| **Vo
 
 ------------------------------------------------------------------------
 
-### **MmeI Digestion and DNA Recovery**
+### MmeI Digestion and DNA Recovery
 
 -   [ ] CutSmart buffer (10×; NEB)\
 -   [ ] S-Adenosylmethionine (SAM; NEB)\
@@ -267,9 +261,9 @@ Reagents and volumes (per reaction): \| **Reagent** \| **Concentration** \| **Vo
 
 ------------------------------------------------------------------------
 
-### **Illumina Library Construction**
+### Illumina Library Construction
 
-#### **Adapter ligation**
+#### Adapter ligation
 
 -   [ ] 10× T4 DNA Ligase Buffer
 -   [ ] T4 DNA Ligase (Thermo; 2 U/µL)
@@ -280,17 +274,17 @@ PE-adapter 1 `5’-OH–ACACTCTTTCCCTACACGACGCTCTTCCGATCTNN–OH-3’` `3’-OH�
 
 PE-adapter 2 `5’-OH–GATCGGAAGAGCACACGTCTGAACTCCAGTCAC–OH-3’` `3’-OH–NNCTAGCCTTCTCGTGTGCTCTTCCGATCAGTG–OH-5’`
 
-### **Adapter Cleanup**
+### Adapter Cleanup
 
 -   [ ] AMPure XP beads
 -   [ ] 80% ethanol
 -   [ ] Nuclease-free water (ddH₂O)
 
-### **DNA Repair**
+### DNA Repair
 
 -   [ ] PreCR Repair Mix (NEB): per manufacturer’s instructions
 
-### **PCR Amplification**
+### PCR Amplification
 
 -   [ ] Repaired DNA: 5–10 µL (template)
 -   [ ] PCR master mix: per manufacturer’s protocol

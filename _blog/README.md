@@ -42,7 +42,7 @@ Biodiversity, DNA, Ficus, Genomics, Method, Misc., Molecular Biology, NGS, R, Sp
 
 ## Topic backlog
 
-- [ ] Finish the **historical DNA** draft (`posts/2025-10-29-Hist-DNA/`). It's nearly ready to post.
+- [ ] Finish the **historical DNA** draft (`posts/2025-10-29-Hist-DNA/`). It has an overview so far.
 - [ ] B.E.S.T. libraries follow-up: what changed with more samples
 - [ ] DLO Hi-C: first results or troubleshooting notes
 - [ ] Fig wasp communities: a short explainer for non-specialists

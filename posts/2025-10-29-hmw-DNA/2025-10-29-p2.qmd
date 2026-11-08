@@ -6,9 +6,7 @@ image: ../../images/DNA-color-AdobeStock_533862779.png
 description: "A step-by-step overview of our modified Qiagen protocols for isolating high-molecular-weight genomic DNA from *Ficus* leaves and their pollinating fig wasps, optimized for long-read sequencing."
 format:
   html:
-    theme: minty
     toc: false
-    code-fold: true
 resources:
   - QIAGEN-Genomic-DNA-Extraction-Modified-Protocol-insect-as-input.pdf
   - QIAGEN-Genomic-DNA-Extraction-Modified-Protocol-plant-and-fungi-as-input.pdf

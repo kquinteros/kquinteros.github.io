@@ -2,15 +2,9 @@
 title: "DNA Extraction and B.E.S.T. library construction from Herbarium Ficus leaves"
 description: "We’ve been testing DNA extraction and Illumina library preparation methods on Ficus herbarium samples; some samples are a century old!"
 image: ../../images/DNA-color-AdobeStock_533862779.png
-author: "Kevin Quinteros"
-date: "2025-11-03"
-categories: [DNA, Ficus, NGS]   # Customize tags
-draft: false                                # Set true while editing
-format:
-  html:
-    toc: true
-    toc-depth: 2
-    code-fold: true
+date: 2025-11-03
+categories: [DNA, Ficus, NGS, R]
+draft: false
 ---
 
 Over the past few weeks, we’ve been experimenting with DNA extraction and Illumina library construction using *Ficus* herbarium samples. Some of which are a century old. The library preparation follows the B.E.S.T. protocol ([Carøe et al., 2018](https://doi.org/10.1111/2041-210X.12871)), which is designed for working with degraded DNA such as that found in museum specimens.

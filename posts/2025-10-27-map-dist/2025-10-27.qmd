@@ -4,11 +4,6 @@ date: 2025-07-18
 categories: [Biodiversity, Spatial Analysis, R]
 image: Estero_Bay_Preserve_State_Park_map.png
 description: "Visualizing the distribution of *Ficus aurea* and *Ficus citrifolia* collections across Florida State Parks using R spatial analysis tools."
-format:
-  html:
-    theme: minty   # light theme
-    toc: true
-    code-fold: true
 execute:
   sandbox: false
 resources: 

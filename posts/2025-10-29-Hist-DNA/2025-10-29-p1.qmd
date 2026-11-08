@@ -2,14 +2,9 @@
 title: "Extracting Historical DNA from Ficus leaves"
 date: 2025-10-29
 categories: [DNA, NGS, Molecular Biology]
-image: Estero_Bay_Preserve_State_Park_map.png
+image: ../../images/DNA-color-AdobeStock_533862779.png
 description: "A walkthrough of the process for extracting high-quality DNA from historical *Ficus* leaf samples collected across Florida, including challenges with degraded tissue and steps to optimize yield."
 draft: true
-format:
-  html:
-    theme: minty   # light theme
-    toc: true
-    code-fold: true
 ---
 
 ## Overview
