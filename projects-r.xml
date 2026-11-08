@@ -6,10 +6,10 @@
       version="2.0">
 <channel>
 <title>Kevin Quinteros</title>
-<link>https://phylofignatico.com/projects.html#category=R</link>
-<atom:link href="https://phylofignatico.com/projects-r.xml" rel="self" type="application/rss+xml"/>
+<link>https://kquinteros.github.io/projects.html#category=R</link>
+<atom:link href="https://kquinteros.github.io/projects-r.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.8.24</generator>
-<lastBuildDate>Fri, 14 Nov 2025 20:38:27 GMT</lastBuildDate>
+<lastBuildDate>Sun, 08 Nov 2026 05:12:04 GMT</lastBuildDate>
 </channel>
 </rss>

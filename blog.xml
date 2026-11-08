@@ -6,15 +6,15 @@
       version="2.0">
 <channel>
 <title>Kevin Quinteros</title>
-<link>https://phylofignatico.com/blog.html</link>
-<atom:link href="https://phylofignatico.com/blog.xml" rel="self" type="application/rss+xml"/>
+<link>https://kquinteros.github.io/blog.html</link>
+<atom:link href="https://kquinteros.github.io/blog.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.8.24</generator>
 <lastBuildDate>Tue, 04 Nov 2025 05:00:00 GMT</lastBuildDate>
 <item>
   <title>Chromosome Conformation Capture (3C): DLO Hi-C</title>
   <dc:creator>Kevin Quinteros</dc:creator>
-  <link>https://phylofignatico.com/posts/2025-11-04-DLo-HiC/2025-11-04.html</link>
+  <link>https://kquinteros.github.io/posts/2025-11-04-DLo-HiC/2025-11-04.html</link>
   <description><![CDATA[ 
 
 
@@ -497,14 +497,14 @@
  ]]></description>
   <category>Method</category>
   <category>NGS</category>
-  <guid>https://phylofignatico.com/posts/2025-11-04-DLo-HiC/2025-11-04.html</guid>
+  <guid>https://kquinteros.github.io/posts/2025-11-04-DLo-HiC/2025-11-04.html</guid>
   <pubDate>Tue, 04 Nov 2025 05:00:00 GMT</pubDate>
-  <media:content url="https://phylofignatico.com/images/Genome_AdobeStock_277779914.png" medium="image" type="image/png" height="93" width="144"/>
+  <media:content url="https://kquinteros.github.io/images/Genome_AdobeStock_277779914.png" medium="image" type="image/png" height="93" width="144"/>
 </item>
 <item>
   <title>DNA Extraction and B.E.S.T. library construction from Herbarium Ficus leaves</title>
   <dc:creator>Kevin Quinteros</dc:creator>
-  <link>https://phylofignatico.com/posts/2025-11-03-best-lib/2025-11-03.html</link>
+  <link>https://kquinteros.github.io/posts/2025-11-03-best-lib/2025-11-03.html</link>
   <description><![CDATA[ 
 
 
@@ -1305,7 +1305,7 @@ font-style: inherit;">"Older samples yield less DNA?"</span>)</span></code></pre
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="https://phylofignatico.com/posts/2025-11-03-best-lib/2025-11-03_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="https://kquinteros.github.io/posts/2025-11-03-best-lib/2025-11-03_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -1376,7 +1376,7 @@ font-style: inherit;">"Does input mass affect DNA yield?"</span>)</span></code><
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="https://phylofignatico.com/posts/2025-11-03-best-lib/2025-11-03_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="https://kquinteros.github.io/posts/2025-11-03-best-lib/2025-11-03_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -1457,7 +1457,7 @@ font-style: inherit;">"Does DNA input mass affect final Library Concentration?"<
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="https://phylofignatico.com/posts/2025-11-03-best-lib/2025-11-03_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="https://kquinteros.github.io/posts/2025-11-03-best-lib/2025-11-03_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -1536,7 +1536,7 @@ font-style: inherit;">"Does Sample Age Affect Final Library Concentration?"</spa
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="https://phylofignatico.com/posts/2025-11-03-best-lib/2025-11-03_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="https://kquinteros.github.io/posts/2025-11-03-best-lib/2025-11-03_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -1618,7 +1618,7 @@ font-style: inherit;">theme_minimal</span>()</span></code></pre></div></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="https://phylofignatico.com/posts/2025-11-03-best-lib/2025-11-03_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="https://kquinteros.github.io/posts/2025-11-03-best-lib/2025-11-03_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -1641,14 +1641,14 @@ font-style: inherit;">theme_minimal</span>()</span></code></pre></div></div>
   <category>DNA</category>
   <category>Ficus</category>
   <category>NGS</category>
-  <guid>https://phylofignatico.com/posts/2025-11-03-best-lib/2025-11-03.html</guid>
+  <guid>https://kquinteros.github.io/posts/2025-11-03-best-lib/2025-11-03.html</guid>
   <pubDate>Mon, 03 Nov 2025 05:00:00 GMT</pubDate>
-  <media:content url="https://phylofignatico.com/images/DNA-color-AdobeStock_533862779.png" medium="image" type="image/png" height="144" width="144"/>
+  <media:content url="https://kquinteros.github.io/images/DNA-color-AdobeStock_533862779.png" medium="image" type="image/png" height="144" width="144"/>
 </item>
 <item>
   <title>Extracting High-Molecular-Weight DNA from Ficus Leaves and Fig Wasps</title>
   <dc:creator>Kevin Quinteros</dc:creator>
-  <link>https://phylofignatico.com/posts/2025-10-29-hmw-DNA/2025-10-29-p2.html</link>
+  <link>https://kquinteros.github.io/posts/2025-10-29-hmw-DNA/2025-10-29-p2.html</link>
   <description><![CDATA[ 
 
 
@@ -1720,14 +1720,14 @@ font-style: inherit;">theme_minimal</span>()</span></code></pre></div></div>
   <category>DNA</category>
   <category>NGS</category>
   <category>Genomics</category>
-  <guid>https://phylofignatico.com/posts/2025-10-29-hmw-DNA/2025-10-29-p2.html</guid>
+  <guid>https://kquinteros.github.io/posts/2025-10-29-hmw-DNA/2025-10-29-p2.html</guid>
   <pubDate>Wed, 29 Oct 2025 04:00:00 GMT</pubDate>
-  <media:content url="https://phylofignatico.com/images/DNA-color-AdobeStock_533862779.png" medium="image" type="image/png" height="144" width="144"/>
+  <media:content url="https://kquinteros.github.io/images/DNA-color-AdobeStock_533862779.png" medium="image" type="image/png" height="144" width="144"/>
 </item>
 <item>
   <title>New Website!</title>
   <dc:creator>Kevin Quinteros</dc:creator>
-  <link>https://phylofignatico.com/posts/2025-10-01-new-web/2025-10-01.html</link>
+  <link>https://kquinteros.github.io/posts/2025-10-01-new-web/2025-10-01.html</link>
   <description><![CDATA[ 
 
 
@@ -1745,14 +1745,14 @@ font-style: inherit;">theme_minimal</span>()</span></code></pre></div></div>
 
  ]]></description>
   <category>Misc.</category>
-  <guid>https://phylofignatico.com/posts/2025-10-01-new-web/2025-10-01.html</guid>
+  <guid>https://kquinteros.github.io/posts/2025-10-01-new-web/2025-10-01.html</guid>
   <pubDate>Wed, 01 Oct 2025 04:00:00 GMT</pubDate>
-  <media:content url="https://phylofignatico.com/images/Misc_AdobeStock_670426441.png" medium="image" type="image/png" height="144" width="144"/>
+  <media:content url="https://kquinteros.github.io/images/Misc_AdobeStock_670426441.png" medium="image" type="image/png" height="144" width="144"/>
 </item>
 <item>
   <title>Mapping the Distribution of Ficus aurea and Ficus citrifolia individuals in Florida State Parks</title>
   <dc:creator>Kevin Quinteros</dc:creator>
-  <link>https://phylofignatico.com/posts/2025-10-27-map-dist/2025-10-27.html</link>
+  <link>https://kquinteros.github.io/posts/2025-10-27-map-dist/2025-10-27.html</link>
   <description><![CDATA[ 
 
 
@@ -2277,7 +2277,7 @@ i Please use the `linewidth` argument instead.</code></pre>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="https://phylofignatico.com/posts/2025-10-27-map-dist/2025-10-27_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="https://kquinteros.github.io/posts/2025-10-27-map-dist/2025-10-27_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -2526,35 +2526,35 @@ font-style: inherit;">"Darjeeling1"</span>))</span>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="https://phylofignatico.com/posts/2025-10-27-map-dist/2025-10-27_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="https://kquinteros.github.io/posts/2025-10-27-map-dist/2025-10-27_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="https://phylofignatico.com/posts/2025-10-27-map-dist/2025-10-27_files/figure-html/unnamed-chunk-6-2.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="https://kquinteros.github.io/posts/2025-10-27-map-dist/2025-10-27_files/figure-html/unnamed-chunk-6-2.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="https://phylofignatico.com/posts/2025-10-27-map-dist/2025-10-27_files/figure-html/unnamed-chunk-6-3.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="https://kquinteros.github.io/posts/2025-10-27-map-dist/2025-10-27_files/figure-html/unnamed-chunk-6-3.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="https://phylofignatico.com/posts/2025-10-27-map-dist/2025-10-27_files/figure-html/unnamed-chunk-6-4.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="https://kquinteros.github.io/posts/2025-10-27-map-dist/2025-10-27_files/figure-html/unnamed-chunk-6-4.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="https://phylofignatico.com/posts/2025-10-27-map-dist/2025-10-27_files/figure-html/unnamed-chunk-6-5.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="https://kquinteros.github.io/posts/2025-10-27-map-dist/2025-10-27_files/figure-html/unnamed-chunk-6-5.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -2567,9 +2567,9 @@ font-style: inherit;">"Darjeeling1"</span>))</span>
   <category>Biodiversity</category>
   <category>Spatial Analysis</category>
   <category>R</category>
-  <guid>https://phylofignatico.com/posts/2025-10-27-map-dist/2025-10-27.html</guid>
+  <guid>https://kquinteros.github.io/posts/2025-10-27-map-dist/2025-10-27.html</guid>
   <pubDate>Fri, 18 Jul 2025 04:00:00 GMT</pubDate>
-  <media:content url="https://phylofignatico.com/posts/2025-10-27-map-dist/Estero_Bay_Preserve_State_Park_map.png" medium="image" type="image/png" height="144" width="144"/>
+  <media:content url="https://kquinteros.github.io/posts/2025-10-27-map-dist/Estero_Bay_Preserve_State_Park_map.png" medium="image" type="image/png" height="144" width="144"/>
 </item>
 </channel>
 </rss>
