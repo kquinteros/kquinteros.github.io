@@ -1,6 +1,6 @@
 # PhyloFignatico
 
-This is the repository for my [personal website](squinters.github.io) built using **Quarto**.  
+This is the repository for my [personal website](https://kquinteros.github.io) built using **Quarto**.  
 
 ## About
 
