@@ -6,7 +6,7 @@ about:
   links:
     - text: LinkedIn
       icon: linkedin
-      url: "https://www.linkedin.com/in/kevin-quinteros-phd-348a03320/"
+      url: "https://www.linkedin.com/in/kevin-quinteros-348a03320/"
     - text: GitHub
       icon: github
       url: "https://github.com/kquinteros"
