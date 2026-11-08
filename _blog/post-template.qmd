@@ -1,0 +1,42 @@
+---
+# Copy me:  mkdir posts/YYYY-MM-DD-short-slug && cp _blog/post-template.qmd posts/YYYY-MM-DD-short-slug/index.qmd
+# Author, ORCID, comments, freeze and the banner title come from posts/_metadata.yml. Don't repeat them here.
+title: "Post Title in Title Case"
+description: "One or two sentences shown on the blog listing card."
+date: 2026-11-29               # set to the actual publish day when you flip draft to false
+categories: [DNA, NGS]         # reuse existing ones (see _blog/README.md); add R if the post has R code (RSS feed)
+image: ../../images/DNA-color-AdobeStock_533862779.png   # or a file inside this post's folder
+draft: true                    # hidden from the site until set to false
+format:
+  html:
+    toc: true
+    toc-depth: 2
+    code-fold: true
+# resources:                   # uncomment for downloadable files (PDF, CSV) kept in this folder
+#   - my-protocol.pdf
+---
+
+## Overview
+
+What this post covers and why it matters, in 2–4 sentences.
+
+## Main Section
+
+Body text. Use `##` for sections and `###` for subsections, with no `**bold**` inside headings.
+
+![Alt text describing the figure](figure.png){fig-align="center" width="80%"}
+
+```{r}
+#| warning: false
+#| message: false
+# R code goes here. Delete this chunk if the post has none.
+```
+
+## Takeaways
+
+- Key point one
+- Key point two
+
+## References
+
+- Author et al. (Year). [Title](https://doi.org/...)
